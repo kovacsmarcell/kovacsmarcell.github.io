@@ -284,29 +284,39 @@
     function splitNode(node){
       const out = document.createElement('span');
       out.style.display = 'inline-block';
+      // Group consecutive non-space chars into a .word wrapper so the browser
+      // only breaks at real spaces, not between letters of a name.
+      let word = null;
+      const ensureWord = () => {
+        if(!word){ word = document.createElement('span'); word.className = 'word'; }
+        return word;
+      };
+      const flushWord = () => { if(word){ out.appendChild(word); word = null; } };
+      const makeCh = (ch) => {
+        const s = document.createElement('span');
+        s.className = 'ch' + (ch===' ' ? ' sp' : '');
+        s.textContent = ch;
+        return s;
+      };
       [...node.childNodes].forEach(c => {
         if(c.nodeType === 3){ // text
           [...c.textContent].forEach(ch => {
-            const s = document.createElement('span');
-            s.className = 'ch' + (ch===' ' ? ' sp' : '');
-            s.textContent = ch;
-            out.appendChild(s);
+            if(ch === ' '){ flushWord(); out.appendChild(makeCh(ch)); }
+            else { ensureWord().appendChild(makeCh(ch)); }
           });
         } else if(c.nodeType === 1){
+          flushWord();
           const wrap = c.cloneNode(false);
+          wrap.classList.add('word');
           [...c.childNodes].forEach(cc => {
             if(cc.nodeType === 3){
-              [...cc.textContent].forEach(ch => {
-                const s = document.createElement('span');
-                s.className = 'ch' + (ch===' ' ? ' sp' : '');
-                s.textContent = ch;
-                wrap.appendChild(s);
-              });
+              [...cc.textContent].forEach(ch => wrap.appendChild(makeCh(ch)));
             }
           });
           out.appendChild(wrap);
         }
       });
+      flushWord();
       return out;
     }
     const splitted = splitNode(heroName);
