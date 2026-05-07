@@ -396,11 +396,11 @@ footer .toTop:hover .arr{transform:translateY(-2px)}ace-between;flex-wrap:wrap;g
 
 /* ============ PAGE LOAD INTRO ============ */
 .intro-curtain{position:fixed;inset:0;z-index:9999;background:#07091a;pointer-events:none;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:28px}
-.intro-curtain .ic-mark{font-family:'Instrument Serif', serif;font-style:italic;font-size:clamp(42px, 6vw, 86px);color:#f1ecdd;letter-spacing:-.02em;opacity:0;animation:icMark 1400ms cubic-bezier(.2,.7,.2,1) forwards}
-.intro-curtain .ic-mark .dot{display:inline-block;width:.18em;height:.18em;border-radius:99px;background:#a8b8ff;margin-left:.18em;vertical-align:middle;box-shadow:0 0 24px #a8b8ff;opacity:0;animation:icDot 900ms 600ms cubic-bezier(.2,.7,.2,1) forwards}
-.intro-curtain .ic-line{width:0;height:1px;background:linear-gradient(90deg,transparent,rgba(168,184,255,.7),transparent);animation:icLine 1100ms 250ms cubic-bezier(.6,0,.2,1) forwards;max-width:480px;width:42vw}
-.intro-curtain .ic-meta{font:500 10px/1 'JetBrains Mono', monospace;letter-spacing:.32em;text-transform:uppercase;color:rgba(241,236,221,.4);opacity:0;animation:icMeta 800ms 700ms ease forwards;display:flex;gap:24px}
-.intro-curtain.lift{animation:icLift 1200ms 1700ms cubic-bezier(.7,0,.2,1) forwards}
+.intro-curtain .ic-mark{font-family:'Instrument Serif', serif;font-style:italic;font-size:clamp(42px, 6vw, 86px);color:#f1ecdd;letter-spacing:-.02em;opacity:0;animation:icMark 700ms cubic-bezier(.2,.7,.2,1) forwards}
+.intro-curtain .ic-mark .dot{display:inline-block;width:.18em;height:.18em;border-radius:99px;background:#a8b8ff;margin-left:.18em;vertical-align:middle;box-shadow:0 0 24px #a8b8ff;opacity:0;animation:icDot 450ms 300ms cubic-bezier(.2,.7,.2,1) forwards}
+.intro-curtain .ic-line{width:0;height:1px;background:linear-gradient(90deg,transparent,rgba(168,184,255,.7),transparent);animation:icLine 550ms 125ms cubic-bezier(.6,0,.2,1) forwards;max-width:480px;width:42vw}
+.intro-curtain .ic-meta{font:500 10px/1 'JetBrains Mono', monospace;letter-spacing:.32em;text-transform:uppercase;color:rgba(241,236,221,.4);opacity:0;animation:icMeta 400ms 350ms ease forwards;display:flex;gap:24px}
+.intro-curtain.lift{animation:icLift 600ms 850ms cubic-bezier(.7,0,.2,1) forwards}
 @keyframes icMark{from{opacity:0;transform:translateY(14px) scale(.97);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
 @keyframes icDot{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
 @keyframes icLine{from{width:0;opacity:0}to{width:42vw;opacity:1}}
@@ -418,17 +418,17 @@ body:not(.intro-done) .hero .nameHu,
 body:not(.intro-done) .hero .tag,
 body:not(.intro-done) .hero .scroll-cue,
 body:not(.intro-done) .hero canvas{opacity:0}
-body.intro-done .hero .meta-tl{animation:fadeUp 900ms 1900ms both cubic-bezier(.2,.7,.2,1)}
-body.intro-done .hero .meta-tr{animation:fadeUp 900ms 1950ms both cubic-bezier(.2,.7,.2,1)}
-body.intro-done .hero .meta-bl{animation:fadeUp 900ms 2000ms both cubic-bezier(.2,.7,.2,1)}
-body.intro-done .hero .meta-br{animation:fadeUp 900ms 2050ms both cubic-bezier(.2,.7,.2,1)}
-body.intro-done .hero canvas{animation:fadeIn 1500ms 1750ms both ease}
-body.intro-done .hero .eyebrow{animation:fadeUp 900ms 1850ms both cubic-bezier(.2,.7,.2,1)}
-body.intro-done .hero h1 .ch{animation:chRise 700ms cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(1900ms + var(--ci, 0) * 28ms)}
-body.intro-done .hero .nameHu{animation:fadeUp 900ms 2400ms both cubic-bezier(.2,.7,.2,1)}
-body.intro-done .hero .tag{animation:fadeUp 900ms 2500ms both cubic-bezier(.2,.7,.2,1)}
-body.intro-done .hero .scroll-cue{animation:fadeUp 900ms 2700ms both cubic-bezier(.2,.7,.2,1)}
-body.intro-done .hero .nodelabel{animation:fadeIn 800ms 2300ms both ease}
+body.intro-done .hero .meta-tl{animation:fadeUp 450ms 950ms both cubic-bezier(.2,.7,.2,1)}
+body.intro-done .hero .meta-tr{animation:fadeUp 450ms 975ms both cubic-bezier(.2,.7,.2,1)}
+body.intro-done .hero .meta-bl{animation:fadeUp 450ms 1000ms both cubic-bezier(.2,.7,.2,1)}
+body.intro-done .hero .meta-br{animation:fadeUp 450ms 1025ms both cubic-bezier(.2,.7,.2,1)}
+body.intro-done .hero canvas{animation:fadeIn 750ms 875ms both ease}
+body.intro-done .hero .eyebrow{animation:fadeUp 450ms 925ms both cubic-bezier(.2,.7,.2,1)}
+body.intro-done .hero h1 .ch{animation:chRise 350ms cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(950ms + var(--ci, 0) * 14ms)}
+body.intro-done .hero .nameHu{animation:fadeUp 450ms 1200ms both cubic-bezier(.2,.7,.2,1)}
+body.intro-done .hero .tag{animation:fadeUp 450ms 1250ms both cubic-bezier(.2,.7,.2,1)}
+body.intro-done .hero .scroll-cue{animation:fadeUp 450ms 1350ms both cubic-bezier(.2,.7,.2,1)}
+body.intro-done .hero .nodelabel{animation:fadeIn 400ms 1150ms both ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes chRise{from{opacity:0;transform:translateY(60%) rotate(-2deg);filter:blur(10px)}to{opacity:1;transform:none;filter:blur(0)}}
@@ -522,8 +522,8 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
   requestAnimationFrame(()=>{
     document.querySelectorAll('.hero h1 .ch').forEach((el,i)=>el.style.setProperty('--ci', i));
   });
-  setTimeout(()=>{ c.classList.add('lift'); document.body.classList.add('intro-done'); }, 1700);
-  setTimeout(()=>{ c.remove(); }, 3100);
+  setTimeout(()=>{ c.classList.add('lift'); document.body.classList.add('intro-done'); }, 850);
+  setTimeout(()=>{ c.remove(); }, 1600);
 })();
 </script>
 
