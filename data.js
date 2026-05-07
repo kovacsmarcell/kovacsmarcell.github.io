@@ -20,7 +20,7 @@ window.MK_DATA = {
   about: [
     "I am a computer engineer who became a political scientist who became an economist, not by switching tracks, but by refusing to pick one.",
     "My work sits where code, capital, and policy collide: semiconductor industrial policy, techno-nationalism, electric-vehicle supply chains, and the financial markets that price all of it.",
-    "I research, teach, build, and represent. The questions I care about — how states use industrial policy, how supply chains absorb shocks, how markets price all of it — don't sit inside one discipline, so I don't either."
+    "I research, teach, build, and represent. The questions I care about (how states use industrial policy, how supply chains absorb shocks, how markets price all of it) don't sit inside one discipline, so I don't either."
   ],
 
   stats: [
