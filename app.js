@@ -346,7 +346,7 @@
   /* ============ marquee signature ============ */
   const signRow = document.getElementById('signRow');
   if(signRow){
-    const phrases = ['Computer scientist', 'Political scientist', 'Economist', 'Researcher', 'Founder'];
+    const phrases = ['Computer engineer', 'Political scientist', 'Economist', 'Researcher', 'Founder'];
     const html = phrases.map(p => `<span>${p}</span>`).join('');
     signRow.innerHTML = html + html;
   }
