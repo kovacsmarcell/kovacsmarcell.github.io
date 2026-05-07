@@ -6,7 +6,7 @@ function MKTweaks(){
 
   useEffect(()=>{
     document.documentElement.style.setProperty('--accent', t.accent);
-    document.body.dataset.mode = t.mode;
+    document.documentElement.dataset.mode = t.mode;
     const mt = document.getElementById('modeToggle');
     if(mt) mt.textContent = t.mode==='dark' ? 'Dark / Light' : 'Light / Dark';
     const ticker = document.getElementById('ticker');

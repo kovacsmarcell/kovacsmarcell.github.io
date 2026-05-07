@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-mode="light">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -69,7 +69,7 @@ body{overflow-x:hidden}
 ::selection{background:var(--accent);color:#fff}
 
 /* ================ scrollbar ================ */
-html{scrollbar-width:thin;scrollbar-color:var(--ink-3) transparent}
+html{overflow-x:hidden;scrollbar-width:thin;scrollbar-color:var(--ink-3) transparent}
 ::-webkit-scrollbar{width:12px;height:12px;background:transparent}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{
@@ -528,7 +528,7 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
 </script>
 
 </head>
-<body data-mode="light">
+<body>
 
 <div class="intro-curtain" id="introCurtain" aria-hidden="true">
   <div class="ic-meta"><span>MARCELL KOVÁCS</span><span>EST. 1999</span><span>BUDAPEST</span></div>
@@ -562,8 +562,8 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
 </div>
 
 <!-- SIDE RAIL -->
-<button class="railToggle" id="railToggle" aria-expanded="true" aria-controls="rail" aria-label="Toggle navigation"><span class="chev"></span></button>
-<nav class="rail" id="rail" aria-label="Section navigation">
+<button class="railToggle" id="railToggle" aria-expanded="false" aria-controls="rail" aria-label="Toggle navigation"><span class="chev"></span></button>
+<nav class="rail closed" id="rail" aria-label="Section navigation">
   <a href="#hero" data-target="hero">00 / Index</a>
   <a href="#about" data-target="about">01 / About</a>
   <a href="#research" data-target="research">02 / Research</a>

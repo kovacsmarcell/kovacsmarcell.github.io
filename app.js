@@ -176,7 +176,7 @@
   /* ============ rail open/close ============ */
   const rail = document.getElementById('rail');
   const railToggle = document.getElementById('railToggle');
-  let railOpen = true;
+  let railOpen = false;
   function setRail(open){
     railOpen = open;
     rail.classList.toggle('closed', !open);
@@ -195,6 +195,7 @@
     entries.forEach(en=>{
       onHero = en.isIntersecting;
       if(userOverride) return;
+      if(window.innerWidth <= 720) return; // mobile: rail stays manually controlled
       setRail(onHero);
     });
   }, {threshold: 0.1});
@@ -230,7 +231,7 @@
   /* ============ mode toggle ============ */
   const mt = document.getElementById('modeToggle');
   function setMode(m){
-    document.body.dataset.mode = m;
+    document.documentElement.dataset.mode = m;
     window.__TWEAKS__.mode = m;
     mt.textContent = m==='dark' ? 'Dark / Light' : 'Light / Dark';
     // notify React tweaks panel so its internal state stays in sync
@@ -238,10 +239,10 @@
   }
   window.__mkSetMode = setMode;
   mt.addEventListener('click', ()=>{
-    const cur = document.body.dataset.mode || 'light';
+    const cur = document.documentElement.dataset.mode || 'light';
     setMode(cur==='light' ? 'dark' : 'light');
     if(window.parent !== window){
-      window.parent.postMessage({type:'__edit_mode_set_keys', edits:{mode: document.body.dataset.mode}}, '*');
+      window.parent.postMessage({type:'__edit_mode_set_keys', edits:{mode: document.documentElement.dataset.mode}}, '*');
     }
   });
   if(window.__TWEAKS__.mode==='dark') setMode('dark');
