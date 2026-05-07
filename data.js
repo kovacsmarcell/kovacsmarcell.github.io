@@ -26,7 +26,7 @@ window.MK_DATA = {
   stats: [
     { n: 2,  label: "engineering & policy degrees" },
     { n: 6,  label: "international universities" },
-    { n: 3,  label: "EBES / GLOBAFA papers" },
+    { n: 4,  label: "EBES / GLOBAFA presentations" },
     { n: 14, label: "countries of conference work" }
   ],
 
