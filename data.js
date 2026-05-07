@@ -2,14 +2,14 @@
 window.MK_DATA = {
   name: "Marcell Kovács",
   nameHu: "Kovács Marcell",
-  tagline: "Computer scientist. Political scientist. Researcher of techno-nationalism, semiconductors, and the digital economy.",
+  tagline: "Computer engineer. Political scientist. Researcher of techno-nationalism, semiconductors, and the digital economy.",
   email: "kovacs.marcell99@gmail.com",
   phone: "+36 30 439 4078",
   linkedin: "linkedin.com/in/marcellkov",
   location: "Budapest, Hungary",
 
   disciplines: [
-    { id: "cs",   label: "Computer Science",     deg: 0,    detail: "BSc, BME, 4.73 / 5.00" },
+    { id: "cs",   label: "Computer Engineering", deg: 0,    detail: "BSc, BME, 4.73 / 5.00" },
     { id: "math", label: "Mathematics",          deg: 60,   detail: "Morgan Stanley Special Award" },
     { id: "econ", label: "Economics",            deg: 120,  detail: "MSc International Economy & Business" },
     { id: "pol",  label: "Political Science",    deg: 180,  detail: "BA, Corvinus" },
@@ -18,7 +18,7 @@ window.MK_DATA = {
   ],
 
   about: [
-    "I am a computer scientist who became a political scientist who became an economist, not by switching tracks, but by refusing to pick one.",
+    "I am a computer engineer who became a political scientist who became an economist, not by switching tracks, but by refusing to pick one.",
     "My work sits where code, capital, and policy collide: semiconductor industrial policy, techno-nationalism, electric-vehicle supply chains, and the financial markets that price all of it.",
     "I research, teach, build, and represent. The questions I care about — how states use industrial policy, how supply chains absorb shocks, how markets price all of it — don't sit inside one discipline, so I don't either."
   ],
