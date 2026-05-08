@@ -405,8 +405,11 @@ section{position:relative;padding:120px 28px;border-top:1px solid var(--rule)}
   /* speaking already 1col below 880; tighten */
   #speaking .card{padding:22px}
 
-  /* awards list */
-  #awards .list .row{font-size:14px}
+  /* awards list: stack so the note doesn't push off the right edge */
+  #awards .row{grid-template-columns:1fr;gap:4px;padding:18px 0}
+  #awards .row .yr{font-size:16px}
+  #awards .row .nm{font-size:17px;line-height:1.25}
+  #awards .row .nt{text-align:left;max-width:none;font-size:10px;letter-spacing:.14em}
 
   /* civic already 1col below 880; tighten */
   #civic .card{padding:28px 22px}
