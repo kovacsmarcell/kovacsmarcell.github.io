@@ -3,8 +3,6 @@ window.MK_DATA = {
   name: "Marcell Kovács",
   nameHu: "Kovács Marcell",
   tagline: "Computer engineer. Political scientist. Researcher of techno-nationalism, semiconductors, and the digital economy.",
-  email: "kovacs.marcell99@gmail.com",
-  phone: "+36 30 439 4078",
   linkedin: "linkedin.com/in/marcellkov",
   location: "Budapest, Hungary",
 
