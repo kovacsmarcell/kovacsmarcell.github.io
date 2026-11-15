@@ -4,3 +4,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.log
+
+# Private documents stay out of the published site
+uploads/
+*.pdf
