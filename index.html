@@ -8,6 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 <meta name="theme-color" content="#0b1230" />
+<link rel="canonical" href="https://marcellkovacs.me/" />
 
 <meta name="description" content="Computer engineer. Political scientist. Researcher of techno-nationalism, semiconductors, and the digital economy." />
 
@@ -31,6 +32,71 @@
 <meta name="twitter:description" content="Computer engineer. Political scientist. Researcher of techno-nationalism, semiconductors, and the digital economy." />
 <meta name="twitter:image" content="https://marcellkovacs.me/og-image.jpg" />
 <meta name="twitter:image:alt" content="Portrait of Marcell Kovács" />
+
+<!-- Structured data: who this site is about. Every fact here is also visible on the page. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://marcellkovacs.me/#website",
+      "url": "https://marcellkovacs.me/",
+      "name": "Marcell Kovács",
+      "alternateName": ["Kovács Marcell", "marcellkovacs.me"],
+      "inLanguage": "en",
+      "publisher": { "@id": "https://marcellkovacs.me/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://marcellkovacs.me/#profilepage",
+      "url": "https://marcellkovacs.me/",
+      "name": "Marcell Kovács",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://marcellkovacs.me/#website" },
+      "mainEntity": { "@id": "https://marcellkovacs.me/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://marcellkovacs.me/#person",
+      "name": "Marcell Kovács",
+      "givenName": "Marcell",
+      "familyName": "Kovács",
+      "alternateName": ["Kovács Marcell", "Marcell Kovacs", "Kovacs Marcell"],
+      "url": "https://marcellkovacs.me/",
+      "image": [
+        "https://marcellkovacs.me/marcell.jpg",
+        "https://marcellkovacs.me/og-image.jpg"
+      ],
+      "description": "Computer engineer and political scientist in Budapest. Researcher of techno-nationalism, semiconductors, and the digital economy.",
+      "homeLocation": { "@type": "City", "name": "Budapest", "addressCountry": "HU" },
+      "knowsLanguage": ["hu", "en"],
+      "knowsAbout": [
+        "Semiconductor industrial policy",
+        "Techno-nationalism",
+        "Digital economy",
+        "Electric vehicle supply chains"
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Budapest University of Technology and Economics",
+          "url": "https://www.bme.hu/"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Corvinus University of Budapest",
+          "url": "https://www.uni-corvinus.hu/"
+        }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/marcellkov",
+        "https://github.com/kovacsmarcell"
+      ]
+    }
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -637,7 +703,7 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
     <h1 id="heroName">
       Marcell <span class="ital">Kovács</span>
     </h1>
-    <div class="nameHu">Kovács Marcell / Hungarian</div>
+    <div class="nameHu"><span lang="hu">Kovács Marcell</span> / Hungarian</div>
     <p class="tag">
       Computer scientist. Political scientist. Researcher of <em>techno-nationalism</em>, semiconductors, and the <em>digital economy</em>.
     </p>
@@ -841,7 +907,7 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
   var u = ['ko','vacs','.marc','ell','99'].join('');
   var d = ['gm','ail','.','com'].join('');
   var addr = u + String.fromCharCode(64) + d;
-  // Set href only on first user interaction, not on load — even after
+  // Set href only on first user interaction, not on load: even after
   // JS runs, the document has no mailto: attribute for a scraper to find
   // unless it actually hovers or clicks.
   var arm = function(){

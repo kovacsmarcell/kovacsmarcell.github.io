@@ -8,3 +8,6 @@ Thumbs.db
 # Private documents stay out of the published site
 uploads/
 *.pdf
+
+# Planning docs (PRDs, ADRs): the repo root is the web root and the repo is public
+docs/
