@@ -271,6 +271,8 @@ body.scrolled .topbar{background:color-mix(in oklab, var(--paper) 86%, transpare
 .ticker span{font:500 12px/1 'JetBrains Mono', monospace;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:18px}
 .ticker span::after{content:"◆";color:var(--accent);font-size:8px}
 @keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* second copy of a looping row (ticker, marquee): aria-hidden, no box of its own, so its items stay flex items of .row */
+.loopcopy{display:contents}
 
 /* ================ section base ================ */
 section{position:relative;padding:120px 28px;border-top:1px solid var(--rule)}
@@ -320,7 +322,7 @@ section{position:relative;padding:120px 28px;border-top:1px solid var(--rule)}
 #research .pub{display:grid;grid-template-columns:80px 1fr 320px;gap:40px;padding:32px 0;border-bottom:1px solid var(--rule);align-items:start;cursor:default;transition:padding .35s ease, background .35s ease}
 #research .pub:hover{padding-left:18px;padding-right:18px;background:var(--paper)}
 #research .pub .yr{font-family:'Instrument Serif', serif;font-size:36px;color:var(--accent);font-style:italic;line-height:1}
-#research .pub .ttl{font-family:'Instrument Serif', serif;font-size:clamp(22px, 2.2vw, 30px);line-height:1.25;color:var(--ink);text-wrap:pretty}
+#research .pub .ttl{font-family:'Instrument Serif', serif;font-weight:400;font-size:clamp(22px, 2.2vw, 30px);line-height:1.25;color:var(--ink);text-wrap:pretty}
 #research .pub .meta{font:500 11px/1.6 'JetBrains Mono', monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
 #research .pub .meta b{display:block;color:var(--ink-2);font-weight:500;margin-bottom:6px}
 @media (max-width:880px){#research .pub{grid-template-columns:60px 1fr;gap:20px}#research .pub .meta{grid-column:2}}
@@ -356,7 +358,7 @@ section{position:relative;padding:120px 28px;border-top:1px solid var(--rule)}
 #education .school:hover, #education .school.active{background:var(--paper-2);padding-left:32px}
 #education .school .yr{font:500 11px/1 'JetBrains Mono', monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;display:flex;justify-content:space-between}
 #education .school .yr .city{color:var(--accent)}
-#education .school h4{font-family:'Instrument Serif', serif;font-weight:400;font-size:24px;line-height:1.15;letter-spacing:-.01em;text-wrap:pretty;margin-bottom:4px}
+#education .school h3{font-family:'Instrument Serif', serif;font-weight:400;font-size:24px;line-height:1.15;letter-spacing:-.01em;text-wrap:pretty;margin-bottom:4px}
 #education .school p{font-size:14px;color:var(--ink-2)}
 @media (max-width:1024px){#education .grid{grid-template-columns:1fr}}
 
@@ -388,7 +390,7 @@ section{position:relative;padding:120px 28px;border-top:1px solid var(--rule)}
 #civic .card:nth-child(2n){border-right:none}
 #civic .card:nth-last-child(-n+2){border-bottom:none}
 #civic .card .role{font:500 11px/1 'JetBrains Mono', monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
-#civic .card h4{font-family:'Instrument Serif', serif;font-weight:400;font-size:clamp(26px, 2.4vw, 34px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty;margin-bottom:14px}
+#civic .card h3{font-family:'Instrument Serif', serif;font-weight:400;font-size:clamp(26px, 2.4vw, 34px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty;margin-bottom:14px}
 #civic .card p{color:var(--ink-2);line-height:1.55;text-wrap:pretty}
 @media (max-width:880px){#civic .grid{grid-template-columns:1fr}#civic .card{border-right:none}#civic .card:not(:last-child){border-bottom:1px solid var(--rule)}}
 
@@ -660,11 +662,11 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
 <div class="cursor-dot"  id="cursorDot"></div>
 
 <!-- TOPBAR -->
-<div class="topbar">
+<header class="topbar">
   <span class="live">Available / Budapest, EU</span>
   <span><span class="serif italic" style="font-style:italic;text-transform:none;letter-spacing:0;font-size:14px">Marcell Kovács</span> / 2026</span>
   <button class="modetoggle" id="modeToggle">Light / Dark</button>
-</div>
+</header>
 
 <!-- SIDE RAIL -->
 <button class="railToggle" id="railToggle" aria-expanded="false" aria-controls="rail" aria-label="Toggle navigation"><span class="chev"></span></button>
@@ -681,6 +683,7 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
   <a href="#contact" data-target="contact">09 / Contact</a>
 </nav>
 
+<main>
 <!-- =================== HERO =================== -->
 <section class="hero" id="hero" data-screen-label="00 Hero">
   <div class="bgwrap">
@@ -723,7 +726,42 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
 
 <!-- =================== TICKER =================== -->
 <div class="ticker" id="ticker">
-  <div class="row" id="tickerRow"></div>
+  <div class="row" id="tickerRow">
+    <span>EBES Paris 2026</span>
+    <span>TSMC / Techno-Nationalism</span>
+    <span>CHIPS &amp; Science Act</span>
+    <span>V4 × East Asian EVs</span>
+    <span>GLOBAFA Budapest</span>
+    <span>Lecturer / BME Statistics</span>
+    <span>Creative Destruction Lab Berlin</span>
+    <span>Unity in Connectivity Foundation</span>
+    <span>U.S. Embassy Youth Council</span>
+    <span>Battle of Ideas, London</span>
+    <span>European Parliament, Brussels</span>
+    <span>Ars Electronica, Linz</span>
+    <span>Barcelona School of Economics</span>
+    <span>Jagiellonian University, Kraków</span>
+    <span>Arizona State, Phoenix</span>
+    <span>Istanbul Aydın University</span>
+    <div class="loopcopy" aria-hidden="true">
+      <span>EBES Paris 2026</span>
+      <span>TSMC / Techno-Nationalism</span>
+      <span>CHIPS &amp; Science Act</span>
+      <span>V4 × East Asian EVs</span>
+      <span>GLOBAFA Budapest</span>
+      <span>Lecturer / BME Statistics</span>
+      <span>Creative Destruction Lab Berlin</span>
+      <span>Unity in Connectivity Foundation</span>
+      <span>U.S. Embassy Youth Council</span>
+      <span>Battle of Ideas, London</span>
+      <span>European Parliament, Brussels</span>
+      <span>Ars Electronica, Linz</span>
+      <span>Barcelona School of Economics</span>
+      <span>Jagiellonian University, Kraków</span>
+      <span>Arizona State, Phoenix</span>
+      <span>Istanbul Aydın University</span>
+    </div>
+  </div>
 </div>
 
 <div class="numdivider"><div class="big">01</div><div class="lbl">About<em>Four disciplines, one researcher</em></div></div>
@@ -740,7 +778,12 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
         <p>I am a computer engineer who became a political scientist who became an economist, not by switching tracks, but by refusing to pick one.</p>
         <p>My work sits where code, capital, and policy collide: semiconductor industrial policy, techno-nationalism, electric-vehicle supply chains, and the financial markets that price all of it.</p>
         <p>I research, teach, build, and represent. The questions I care about don't sit inside one discipline, so I don't either.</p>
-        <div class="stats reveal" id="aboutStats"></div>
+        <div class="stats reveal" id="aboutStats">
+          <div><div class="n" data-count="3">3</div><div class="lab">engineering &amp; policy degrees</div></div>
+          <div><div class="n" data-count="6">6</div><div class="lab">universities studied at</div></div>
+          <div><div class="n" data-count="4">4</div><div class="lab">EBES / GLOBAFA presentations</div></div>
+          <div><div class="n" data-count="14">14</div><div class="lab">countries of work &amp; study</div></div>
+        </div>
       </div>
       <div class="portrait reveal">
         <div class="frame">
@@ -767,7 +810,53 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
       <span>Peer-reviewed / 2023 → 2026</span>
     </div>
     <h2 class="h-display reveal">Papers on semiconductor <span class="ital">industrial policy</span> and its market effects.</h2>
-    <div class="pubs" id="pubs" style="margin-top:64px"></div>
+    <div class="pubs" id="pubs" style="margin-top:64px">
+      <div class="pub">
+        <div class="yr">2026</div>
+        <h3 class="ttl">Firm-Level Valuation in the New Wave of Techno-Nationalism: The Cases of TSMC Phoenix, Intel Magdeburg, and Rapidus Japan Investments</h3>
+        <div class="meta"><b>55th EBES Conference, Budapest</b>Sole author<br>ISBN 978-625-95653-6-1</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2026</div>
+        <h3 class="ttl">New Wave of Techno-Nationalism? Case of TSMC's U.S. Investment Phases</h3>
+        <div class="meta"><b>54th EBES Conference, Paris</b>Sole author<br>ISBN 978-625-95653-5-4</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2025</div>
+        <h3 class="ttl">Global Financial Market Reactions to U.S. Semiconductor Industrial Policy</h3>
+        <div class="meta"><b>GLOBAFA Conference, Budapest</b>Sole author<br>ISBN 978-625-95653-2-3</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2025</div>
+        <h3 class="ttl">The Economic Impact of Industrial Policy on the Global Semiconductor Supply Chain: An Event Study of the CHIPS and Science Act</h3>
+        <div class="meta"><b>51st EBES Conference, Rome</b>Sole author<br>ISBN 978-625-95653-1-6</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2025</div>
+        <h3 class="ttl">Central Europe–East Asia EV Nexus: Tracking Chinese, South Korean and Japanese EV and battery investment in the V4</h3>
+        <div class="meta"><b>CEIAS Report</b>Co-author with Martin Šebeňa et al.<br>ISBN 978-80-8239-029-5</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2024</div>
+        <h3 class="ttl">Media Literacy Exchange: Insights from Oxford</h3>
+        <div class="meta"><b>LitGloMedia Blog</b>with Luca Hullán<br></div>
+      </div>
+      <div class="pub">
+        <div class="yr">2023</div>
+        <h3 class="ttl">Technology &amp; Challenges of Democracy</h3>
+        <div class="meta"><b>ASU Study of US Institutes Blog</b>with Eni Shtjefni<br></div>
+      </div>
+      <div class="pub">
+        <div class="yr">2022</div>
+        <h3 class="ttl">Analyzing the Effects of News on Stock Prices Using Statistical Methods</h3>
+        <div class="meta"><b>BME BSc Thesis</b>Sole author<br></div>
+      </div>
+      <div class="pub">
+        <div class="yr">WIP</div>
+        <h3 class="ttl">Impact of U.S. Semiconductor Policy Amid the U.S.–China Technology War on Economic Actors</h3>
+        <div class="meta"><b>Working Paper</b>Sole author<br></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -780,7 +869,62 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
     </div>
     <div class="wrap2">
       <p class="legend">A line that runs from a 2015 software apprenticeship in a tractor company to founding a foundation, lecturing statistics, and presenting in Paris in 2026.</p>
-      <ol id="expList"></ol>
+      <ol id="expList">
+        <li>
+          <div class="per">2025 → now</div>
+          <div class="role">President &amp; Legal Representative</div>
+          <div class="org">Unity in Connectivity Foundation</div>
+          <div class="nt">Egység a Kapcsolódásban Alapítvány</div>
+        </li>
+        <li>
+          <div class="per">Autumn 2025</div>
+          <div class="role">Part-time Lecturer of Statistics</div>
+          <div class="org">Budapest University of Technology and Economics</div>
+          <div class="nt">Taught probability theory and statistics; not teaching this spring</div>
+        </li>
+        <li>
+          <div class="per">2025 → 26</div>
+          <div class="role">Student Participant</div>
+          <div class="org">Creative Destruction Lab Berlin</div>
+          <div class="nt">Deep-tech mentoring program</div>
+        </li>
+        <li>
+          <div class="per">2024 → 25</div>
+          <div class="role">Research Assistant</div>
+          <div class="org">Corvinus, Institute of Global Studies</div>
+          <div class="nt">V4 Grant, East Asian EV makers in V4 transitions</div>
+        </li>
+        <li>
+          <div class="per">2023 → now</div>
+          <div class="role">Founder</div>
+          <div class="org">LitGloMedia</div>
+          <div class="nt">Funded by Meridian International &amp; U.S. State Dept.</div>
+        </li>
+        <li>
+          <div class="per">2022 → 23</div>
+          <div class="role">Participant</div>
+          <div class="org">Hungarian Startup University Program</div>
+          <div class="nt">Two-semester startup training</div>
+        </li>
+        <li>
+          <div class="per">2021</div>
+          <div class="role">Intern, ERP &amp; Controlling</div>
+          <div class="org">Petasoft Kft.</div>
+          <div class="nt">Enterprise information systems</div>
+        </li>
+        <li>
+          <div class="per">2019 → 21</div>
+          <div class="role">Youth Council Member</div>
+          <div class="org">U.S. Embassy Budapest</div>
+          <div class="nt">Digital financial literacy with the Hungarian Money Museum</div>
+        </li>
+        <li>
+          <div class="per">2015</div>
+          <div class="role">Software Developer Apprentice</div>
+          <div class="org">CLAAS Hungária Kft.</div>
+          <div class="nt">Corporate data analysis / management systems</div>
+        </li>
+      </ol>
     </div>
   </div>
 </section>
@@ -799,7 +943,38 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
         <svg class="mapsvg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" id="worldSvg"></svg>
         <div id="pins"></div>
       </div>
-      <div class="schools reveal" id="schools"></div>
+      <div class="schools reveal" id="schools">
+        <div class="school" data-i="0" data-city="Budapest" data-lat="47.5" data-lng="19.04">
+          <div class="yr"><span>2022 → now</span><span class="city">Budapest</span></div>
+          <h3>Corvinus University of Budapest</h3>
+          <p>MSc International Economy &amp; Business / BA Political Science</p>
+        </div>
+        <div class="school" data-i="1" data-city="Budapest" data-lat="47.48" data-lng="19.06">
+          <div class="yr"><span>2018 → 22</span><span class="city">Budapest</span></div>
+          <h3>Budapest University of Technology and Economics</h3>
+          <p>BSc Computer Science Engineering / 4.73 / Talent program</p>
+        </div>
+        <div class="school" data-i="2" data-city="Kraków" data-lat="50.06" data-lng="19.94">
+          <div class="yr"><span>Winter 2023</span><span class="city">Kraków</span></div>
+          <h3>Jagiellonian University</h3>
+          <p>International Relations &amp; Complexity Theory</p>
+        </div>
+        <div class="school" data-i="3" data-city="Phoenix" data-lat="33.45" data-lng="-112.07">
+          <div class="yr"><span>Summer 2023</span><span class="city">Phoenix</span></div>
+          <h3>Arizona State University</h3>
+          <p>Journalism and Media / Study of U.S. Institutes</p>
+        </div>
+        <div class="school" data-i="4" data-city="Barcelona" data-lat="41.39" data-lng="2.16">
+          <div class="yr"><span>2024 &amp; 2025</span><span class="city">Barcelona</span></div>
+          <h3>Barcelona School of Economics</h3>
+          <p>Digital Economics / Complex Network Analysis</p>
+        </div>
+        <div class="school" data-i="5" data-city="Istanbul" data-lat="41.01" data-lng="28.97">
+          <div class="yr"><span>2025 &amp; 2026</span><span class="city">Istanbul</span></div>
+          <h3>Istanbul Aydın University</h3>
+          <p>Digital Marketing / Genetics &amp; Medical Biotech</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -812,7 +987,68 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
       <span>9 stages / Paris / Rome / Brussels / D.C. / London</span>
     </div>
     <h2 class="h-display reveal">Conferences, <span class="ital">panels</span>, and student summits.</h2>
-    <div class="grid" id="speak" style="margin-top:64px"></div>
+    <div class="grid" id="speak" style="margin-top:64px">
+      <div class="card">
+        <div class="yr">2026</div>
+        <div class="v">55th EBES Conference</div>
+        <div class="c"><span>Budapest</span><span class="role">Presenter</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2026</div>
+        <div class="v">54th EBES Conference</div>
+        <div class="c"><span>Paris</span><span class="role">Presenter</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2025</div>
+        <div class="v">GLOBAFA Conference</div>
+        <div class="c"><span>Budapest</span><span class="role">Presenter</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2025</div>
+        <div class="v">51st EBES Conference</div>
+        <div class="c"><span>Rome</span><span class="role">Presenter</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2025</div>
+        <div class="v">Corvinus Students' Scientific Conf.</div>
+        <div class="c"><span>Budapest</span><span class="role">1st place</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2024</div>
+        <div class="v">MCC, Harvard Student Summit</div>
+        <div class="c"><span>Boston</span><span class="role">Participant</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2024</div>
+        <div class="v">European Youth Week, EU Parliament</div>
+        <div class="c"><span>Brussels</span><span class="role">Participant</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2024</div>
+        <div class="v">Study of U.S. Institutes Opening</div>
+        <div class="c"><span>Washington D.C.</span><span class="role">Panelist</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2023</div>
+        <div class="v">Battle of Ideas</div>
+        <div class="c"><span>London</span><span class="role">Participant</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2023</div>
+        <div class="v">Deutsch-Ungarisches Institut</div>
+        <div class="c"><span>Zürich</span><span class="role">Participant</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2023</div>
+        <div class="v">Study of U.S. Institutes Opening</div>
+        <div class="c"><span>Washington D.C.</span><span class="role">Participant</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2018</div>
+        <div class="v">Ars Electronica</div>
+        <div class="c"><span>Linz</span><span class="role">Representing Hungary</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -825,7 +1061,63 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
       <span>Mathematics / Research / Entrepreneurship</span>
     </div>
     <h2 class="h-display reveal">Awards from <span class="ital">research</span>, mathematics, and entrepreneurship.</h2>
-    <div class="list" id="awardList" style="margin-top:48px"></div>
+    <div class="list" id="awardList" style="margin-top:48px">
+      <div class="row">
+        <div class="yr">2025</div>
+        <div class="nm">Corvinus Students' Scientific Conf.</div>
+        <div class="nt">First place</div>
+      </div>
+      <div class="row">
+        <div class="yr">2024</div>
+        <div class="nm">U.S. Department of State Award</div>
+        <div class="nt">Successful implementation of the SUSI Mini Grant (LitGloMedia)</div>
+      </div>
+      <div class="row">
+        <div class="yr">2023</div>
+        <div class="nm">Danube Cup International Entrepreneurship</div>
+        <div class="nt">2nd place Hungary / Int'l final, Regensburg</div>
+      </div>
+      <div class="row">
+        <div class="yr">2023</div>
+        <div class="nm">European Space Agency Tech Transfer</div>
+        <div class="nt">Third place</div>
+      </div>
+      <div class="row">
+        <div class="yr">2021</div>
+        <div class="nm">BME GTK Students' Scientific Conf.</div>
+        <div class="nt">Special award / Central Bank of Hungary</div>
+      </div>
+      <div class="row">
+        <div class="yr">2019</div>
+        <div class="nm">BME Mathematics Contest</div>
+        <div class="nt">Morgan Stanley Special Award</div>
+      </div>
+      <div class="row">
+        <div class="yr">2019</div>
+        <div class="nm">BME × Central Bank Research Competition</div>
+        <div class="nt">Special Award, 'The future of money'</div>
+      </div>
+      <div class="row">
+        <div class="yr">2019</div>
+        <div class="nm">Nokia Codejam</div>
+        <div class="nt">Hackathon award</div>
+      </div>
+      <div class="row">
+        <div class="yr"></div>
+        <div class="nm">19. Freestyle Computing Competition</div>
+        <div class="nt">Award</div>
+      </div>
+      <div class="row">
+        <div class="yr"></div>
+        <div class="nm">National Olympiad in Informatics (OKTV)</div>
+        <div class="nt">Honoree</div>
+      </div>
+      <div class="row">
+        <div class="yr"></div>
+        <div class="nm">CheckINN Tourism Innovation Competition</div>
+        <div class="nt">Finalist</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -837,7 +1129,28 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
       <span>Foundation / Media literacy / Student council</span>
     </div>
     <h2 class="h-display reveal">Foundation work and <span class="ital">civic</span> roles.</h2>
-    <div class="grid" id="civicGrid" style="margin-top:48px"></div>
+    <div class="grid" id="civicGrid" style="margin-top:48px">
+      <div class="card">
+        <div class="role">President &amp; Legal Representative</div>
+        <h3>Unity in Connectivity Foundation</h3>
+        <p>Hungarian non-profit; programmes in research, education, and digital literacy.</p>
+      </div>
+      <div class="card">
+        <div class="role">Founder</div>
+        <h3>LitGloMedia</h3>
+        <p>Media-literacy fieldwork across the UK, Ireland, Netherlands; presented findings in Hungarian high schools.</p>
+      </div>
+      <div class="card">
+        <div class="role">Member, 2019 → 21</div>
+        <h3>U.S. Embassy Budapest Youth Council</h3>
+        <p>Worked with the Czech US Embassy Youth Council, EPA, the National Museum of American Diplomacy.</p>
+      </div>
+      <div class="card">
+        <div class="role">Elected Representative, 2021</div>
+        <h3>Student Council, BME</h3>
+        <p>Education and PR teams.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -849,12 +1162,32 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
       <span>As of May 2026</span>
     </div>
     <h2 class="h-display">What I'm <span class="ital">currently</span> working on.</h2>
-    <div class="lines" id="nowLines"></div>
+    <div class="lines" id="nowLines">
+      <div class="line"><div class="k">Researching</div><div class="v">Techno-nationalism in the wake of TSMC's U.S. fab investments.</div></div>
+      <div class="line"><div class="k">Reading</div><div class="v">On industrial policy, complex networks, EU semiconductor strategy.</div></div>
+      <div class="line"><div class="k">Building</div><div class="v">Unity in Connectivity Foundation, programmes for 2026.</div></div>
+      <div class="line"><div class="k">Travelling</div><div class="v">Paris in January (EBES 54), Berlin for CDL.</div></div>
+    </div>
   </div>
 </section>
 
 <!-- marquee signature -->
-<div class="signmarquee"><div class="row" id="signRow"></div></div>
+<div class="signmarquee">
+  <div class="row" id="signRow">
+    <span>Computer engineer</span>
+    <span>Political scientist</span>
+    <span>Economist</span>
+    <span>Researcher</span>
+    <span>Founder</span>
+    <div class="loopcopy" aria-hidden="true">
+      <span>Computer engineer</span>
+      <span>Political scientist</span>
+      <span>Economist</span>
+      <span>Researcher</span>
+      <span>Founder</span>
+    </div>
+  </div>
+</div>
 <!-- =================== CONTACT =================== -->
 <section id="contact" data-screen-label="09 Contact">
   <div class="wrap">
@@ -888,6 +1221,7 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <span>© 2026 Marcell Kovács / Set in Instrument Serif, Inter, JetBrains Mono</span>
@@ -925,7 +1259,6 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
-<script src="data.js"></script>
 <script src="world-path.js"></script>
 <script src="app.js"></script>
 <script type="text/babel" src="tweaks-panel.jsx"></script>

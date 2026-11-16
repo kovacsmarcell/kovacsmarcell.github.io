@@ -1,91 +1,10 @@
 /* Marcell Kovács, site.js
-   Hero canvas network / ticker / reveal / cursor / render data
+   Behaviour only: all content (ticker, stats, publications, experience,
+   schools, speaking, awards, civic, now, marquee) is static in index.html.
+   Here: map + pins, hover sync, scroll reveal and count-up, side rail,
+   mode toggle, cursor, hero name letters, hero network canvas.
 */
 (function(){
-  const D = window.MK_DATA;
-
-  /* ============ render: ticker ============ */
-  const tk = document.getElementById('tickerRow');
-  const tkItems = [
-    "EBES Paris 2026",
-    "TSMC / Techno-Nationalism",
-    "CHIPS & Science Act",
-    "V4 × East Asian EVs",
-    "GLOBAFA Budapest",
-    "Lecturer / BME Statistics",
-    "Creative Destruction Lab Berlin",
-    "Unity in Connectivity Foundation",
-    "U.S. Embassy Youth Council",
-    "Battle of Ideas, London",
-    "European Parliament, Brussels",
-    "Ars Electronica, Linz",
-    "Barcelona School of Economics",
-    "Jagiellonian University, Kraków",
-    "Arizona State, Phoenix",
-    "Istanbul Aydın University"
-  ];
-  const tkHtml = tkItems.map(s => `<span>${s}</span>`).join('');
-  tk.innerHTML = tkHtml + tkHtml; // duplicate for seamless loop
-
-  /* ============ render: about stats ============ */
-  const stats = document.getElementById('aboutStats');
-  stats.innerHTML = D.stats.map(s =>
-    `<div><div class="n" data-count="${s.n}">0</div><div class="lab">${s.label}</div></div>`
-  ).join('');
-
-  /* ============ render: pubs ============ */
-  document.getElementById('pubs').innerHTML = D.publications.map(p => `
-    <div class="pub">
-      <div class="yr">${p.year}</div>
-      <div class="ttl">${p.title}</div>
-      <div class="meta"><b>${p.venue}</b>${p.role ? p.role + '<br>' : ''}${p.isbn ? 'ISBN ' + p.isbn : ''}</div>
-    </div>`).join('');
-
-  /* ============ render: experience ============ */
-  document.getElementById('expList').innerHTML = D.experience.map(e => `
-    <li>
-      <div class="per">${e.period}</div>
-      <div class="role">${e.role}</div>
-      <div class="org">${e.org}</div>
-      <div class="nt">${e.note}</div>
-    </li>`).join('');
-
-  /* ============ render: schools ============ */
-  document.getElementById('schools').innerHTML = D.education.map((s, i) => `
-    <div class="school" data-i="${i}">
-      <div class="yr"><span>${s.years}</span><span class="city">${s.city}</span></div>
-      <h4>${s.school}</h4>
-      <p>${s.program}</p>
-    </div>`).join('');
-
-  /* ============ render: speaking ============ */
-  document.getElementById('speak').innerHTML = D.speaking.map(s => `
-    <div class="card">
-      <div class="yr">${s.year}</div>
-      <div class="v">${s.venue}</div>
-      <div class="c"><span>${s.city}</span><span class="role">${s.role}</span></div>
-    </div>`).join('');
-
-  /* ============ render: awards ============ */
-  document.getElementById('awardList').innerHTML = D.awards.map(a => `
-    <div class="row">
-      <div class="yr">${a.year}</div>
-      <div class="nm">${a.name}</div>
-      <div class="nt">${a.note}</div>
-    </div>`).join('');
-
-  /* ============ render: civic ============ */
-  document.getElementById('civicGrid').innerHTML = D.civic.map(c => `
-    <div class="card">
-      <div class="role">${c.role}</div>
-      <h4>${c.name}</h4>
-      <p>${c.note}</p>
-    </div>`).join('');
-
-  /* ============ render: now ============ */
-  document.getElementById('nowLines').innerHTML = D.now.map(n => `
-    <div class="line"><div class="k">${n.kind}</div><div class="v">${n.text}</div></div>`).join('');
-
   /* ============ map: real world geometry ============ */
   const svg = document.getElementById('worldSvg');
   svg.innerHTML = `
@@ -106,15 +25,16 @@
     const y = ((90 - lat) / 180) * 500;
     return [x, y];
   }
+  // one pin per school card, from its data-lat / data-lng / data-city attributes
   const pinsHost = document.getElementById('pins');
-  D.education.forEach((e, i)=>{
-    const [x, y] = project(e.lat, e.lng);
+  document.querySelectorAll('#schools .school').forEach(s=>{
+    const [x, y] = project(parseFloat(s.dataset.lat), parseFloat(s.dataset.lng));
     const div = document.createElement('div');
     div.className = 'pin';
-    div.dataset.i = i;
+    div.dataset.i = s.dataset.i;
     div.style.left = (x/1000*100)+'%';
     div.style.top = (y/500*100)+'%';
-    div.title = e.city + ' / ' + e.school;
+    div.title = s.dataset.city + ' / ' + s.querySelector('h3').textContent;
     pinsHost.appendChild(div);
   });
 
@@ -189,7 +109,7 @@
   // auto-show on hero, auto-hide everywhere else (unless user manually toggled)
   const heroEl = document.getElementById('hero');
   let onHero = true;
-  let userOverride = false; // user manually toggled — pause hero-based auto behavior
+  let userOverride = false; // user manually toggled: pause hero-based auto behavior
   railToggle.addEventListener('click', () => { userOverride = true; });
   const heroIo = new IntersectionObserver((entries)=>{
     entries.forEach(en=>{
@@ -343,14 +263,6 @@
     });
   }
 
-  /* ============ marquee signature ============ */
-  const signRow = document.getElementById('signRow');
-  if(signRow){
-    const phrases = ['Computer engineer', 'Political scientist', 'Economist', 'Researcher', 'Founder'];
-    const html = phrases.map(p => `<span>${p}</span>`).join('');
-    signRow.innerHTML = html + html;
-  }
-
   /* ============ HERO NETWORK CANVAS ============ */
   const canvas = document.getElementById('netCanvas');
   const ctx = canvas.getContext('2d');
@@ -365,7 +277,14 @@
     placeNodes();
   }
   // discipline nodes, anchored, plus ambient particles
-  const disc = D.disciplines;
+  const disc = [
+    { id: "cs",   label: "Computer Engineering", deg: 0,    detail: "BSc, BME, 4.73 / 5.00" },
+    { id: "math", label: "Mathematics",          deg: 60,   detail: "Morgan Stanley Special Award" },
+    { id: "econ", label: "Economics",            deg: 120,  detail: "MSc International Economy & Business" },
+    { id: "pol",  label: "Political Science",    deg: 180,  detail: "BA, Corvinus" },
+    { id: "dip",  label: "Diplomacy",            deg: 240,  detail: "U.S. Embassy Youth Council" },
+    { id: "biz",  label: "Entrepreneurship",     deg: 300,  detail: "CDL Berlin / Danube Cup" }
+  ];
   let nodes = [], particles = [];
   function placeNodes(){
     const cx = W/2, cy = H/2;
@@ -403,7 +322,6 @@
       const oy = dy/len * 30;
       lab.style.left = (n.ax + ox) + 'px';
       lab.style.top  = (n.ay + oy) + 'px';
-      lab.innerHTML = n.label + '<small>' + nodes.find(x=>x.id===n.id).detail || '' + '</small>';
       // detail lookup
       const d = disc.find(d => d.id===n.id);
       lab.innerHTML = d.label + '<small>'+ d.detail +'</small>';
