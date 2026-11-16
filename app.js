@@ -1,10 +1,23 @@
 /* Marcell Kovács, app.js
    Behaviour only: all content (ticker, stats, publications, experience,
-   schools, speaking, awards, civic, now, marquee) is static in index.html.
+   schools, speaking, awards, civic, now, marquee) is static in the page.
    Here: map + pins, hover sync, scroll reveal and count-up, side rail,
    mode toggle, cursor, hero name letters, hero network canvas.
+   Language-neutral: every text this script writes comes from the page
+   (the uiStrings JSON block, or the page's own elements and attributes),
+   so each language version of the page shares this file.
 */
 (function(){
+  /* ============ page strings ============ */
+  // <script type="application/json" id="uiStrings">: mode toggle labels and
+  // the hero discipline labels. Missing or broken JSON leaves the texts empty
+  // (or, for the mode toggle, unchanged) instead of stopping the script.
+  const ui = (function(){
+    const el = document.getElementById('uiStrings');
+    if(!el) return {};
+    try { return JSON.parse(el.textContent) || {}; } catch(e){ return {}; }
+  })();
+
   /* ============ map: real world geometry ============ */
   const svg = document.getElementById('worldSvg');
   svg.innerHTML = `
@@ -25,7 +38,8 @@
     const y = ((90 - lat) / 180) * 500;
     return [x, y];
   }
-  // one pin per school card, from its data-lat / data-lng / data-city attributes
+  // one pin per school card, from its data-lat / data-lng / data-city attributes;
+  // the tooltip is the card's own city and school name
   const pinsHost = document.getElementById('pins');
   document.querySelectorAll('#schools .school').forEach(s=>{
     const [x, y] = project(parseFloat(s.dataset.lat), parseFloat(s.dataset.lng));
@@ -152,9 +166,10 @@
   // accent colour for the hero canvas: read once by the next drawn frame,
   // and read again after every mode change (empty string = read pending)
   let accentColor = '';
+  const modeLabels = ui.modeToggle || {};
   function setMode(m){
     document.documentElement.dataset.mode = m;
-    mt.textContent = m==='dark' ? 'Dark / Light' : 'Light / Dark';
+    if(modeLabels[m]) mt.textContent = modeLabels[m];
     accentColor = '';
   }
   mt.addEventListener('click', ()=>{
@@ -287,15 +302,20 @@
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     placeNodes();
   }
-  // discipline nodes, anchored, plus ambient particles
+  // discipline nodes, anchored, plus ambient particles. Only the position on
+  // the ring lives here; label and detail come from uiStrings.heroNodes[id].
+  const nodeText = ui.heroNodes || {};
   const disc = [
-    { id: "cs",   label: "Computer Engineering", deg: 0,    detail: "BSc, BME, 4.73 / 5.00" },
-    { id: "math", label: "Mathematics",          deg: 60,   detail: "Morgan Stanley Special Award" },
-    { id: "econ", label: "Economics",            deg: 120,  detail: "MSc International Economy & Business" },
-    { id: "pol",  label: "Political Science",    deg: 180,  detail: "BA, Corvinus" },
-    { id: "dip",  label: "Diplomacy",            deg: 240,  detail: "SUSI / Alpbach / Youth Council" },
-    { id: "biz",  label: "Entrepreneurship",     deg: 300,  detail: "CDL Berlin / Danube Cup" }
-  ];
+    { id: "cs",   deg: 0 },
+    { id: "math", deg: 60 },
+    { id: "econ", deg: 120 },
+    { id: "pol",  deg: 180 },
+    { id: "dip",  deg: 240 },
+    { id: "biz",  deg: 300 }
+  ].map(d => {
+    const tx = nodeText[d.id] || {};
+    return Object.assign(d, { label: tx.label || '', detail: tx.detail || '' });
+  });
   let nodes = [], particles = [];
   function placeNodes(){
     const cx = W/2, cy = H/2;
@@ -333,9 +353,12 @@
       const oy = dy/len * 30;
       lab.style.left = (n.ax + ox) + 'px';
       lab.style.top  = (n.ay + oy) + 'px';
-      // detail lookup
+      // label text, then the detail line in a <small>
       const d = disc.find(d => d.id===n.id);
-      lab.innerHTML = d.label + '<small>'+ d.detail +'</small>';
+      lab.textContent = d.label;
+      const small = document.createElement('small');
+      small.textContent = d.detail;
+      lab.appendChild(small);
       hero.appendChild(lab);
     });
   }
