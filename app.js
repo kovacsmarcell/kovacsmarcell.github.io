@@ -48,24 +48,35 @@
     div.dataset.i = s.dataset.i;
     div.style.left = (x/1000*100)+'%';
     div.style.top = (y/500*100)+'%';
-    div.title = s.dataset.city + ' / ' + s.querySelector('h3').textContent;
+    div.dataset.label = s.dataset.city + ' / ' + s.querySelector('h3').textContent;
+    div.title = div.dataset.label;
     pinsHost.appendChild(div);
   });
 
   // school card hover ↔ pin sync
   const schoolCards = document.querySelectorAll('#schools .school');
-  const pinEls = document.querySelectorAll('#pins .pin');
-  function highlight(i){
-    schoolCards.forEach(s=>s.classList.toggle('active', +s.dataset.i===i));
-    pinEls.forEach(p=>p.style.transform = (+p.dataset.i===i) ? 'translate(-50%, -50%) scale(1.6)' : 'translate(-50%, -50%) scale(1)');
+  const pinEls = [...document.querySelectorAll('#pins .pin')];
+  function highlight(ids){
+    schoolCards.forEach(s=>s.classList.toggle('active', ids.includes(+s.dataset.i)));
+    pinEls.forEach(p=>p.style.transform = ids.includes(+p.dataset.i) ? 'translate(-50%, -50%) scale(1.6)' : 'translate(-50%, -50%) scale(1)');
+  }
+  // on a world map, pins closer than one pin width (Budapest x2, Debrecen, Kraków)
+  // cover each other, so a pin stands for every pin it overlaps: it lights up all
+  // their cards and its tooltip lists them all
+  function overlapping(p){
+    return pinEls.filter(q=>Math.hypot(q.offsetLeft - p.offsetLeft, q.offsetTop - p.offsetTop) < p.offsetWidth);
   }
   schoolCards.forEach(s=>{
-    s.addEventListener('mouseenter', ()=>highlight(+s.dataset.i));
-    s.addEventListener('mouseleave', ()=>highlight(-1));
+    s.addEventListener('mouseenter', ()=>highlight([+s.dataset.i]));
+    s.addEventListener('mouseleave', ()=>highlight([]));
   });
   pinEls.forEach(p=>{
-    p.addEventListener('mouseenter', ()=>highlight(+p.dataset.i));
-    p.addEventListener('mouseleave', ()=>highlight(-1));
+    p.addEventListener('mouseenter', ()=>{
+      const group = overlapping(p);
+      p.title = group.map(q=>q.dataset.label).join('\n');
+      highlight(group.map(q=>+q.dataset.i));
+    });
+    p.addEventListener('mouseleave', ()=>highlight([]));
   });
 
   /* ============ scroll reveal ============ */
@@ -146,6 +157,8 @@
       lastY = window.scrollY;
     }
   }, {passive:true});
+  // same check once at start, for a page that opens already scrolled (reload, #anchor)
+  document.body.classList.toggle('scrolled', window.scrollY > 40);
 
   // initial state based on load position
   setTimeout(()=>{

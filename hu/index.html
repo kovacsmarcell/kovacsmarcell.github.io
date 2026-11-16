@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="hu" data-mode="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kovács Marcell | Technológiapolitikai kutató, Budapest</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="theme-color" content="#0b1230" />
+<link rel="canonical" href="https://marcellkovacs.me/hu/" />
+<link rel="alternate" hreflang="en" href="https://marcellkovacs.me/" />
+<link rel="alternate" hreflang="hu" href="https://marcellkovacs.me/hu/" />
+<link rel="alternate" hreflang="x-default" href="https://marcellkovacs.me/" />
+
+<meta name="description" content="Kovács Marcell mérnökinformatikus, közgazdász és politológus Budapesten. A félvezető-iparpolitikát és a technológiai cégek növekedését kutatja." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://marcellkovacs.me/hu/" />
+<meta property="og:site_name" content="Kovács Marcell" />
+<meta property="og:title" content="Kovács Marcell | Technológiapolitikai kutató, Budapest" />
+<meta property="og:description" content="Kovács Marcell mérnökinformatikus, közgazdász és politológus Budapesten. A félvezető-iparpolitikát és a technológiai cégek növekedését kutatja." />
+<meta property="og:image" content="https://marcellkovacs.me/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Kovács Marcell portréja" />
+<meta property="og:locale" content="hu_HU" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="profile:first_name" content="Marcell" />
+<meta property="profile:last_name" content="Kovács" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kovács Marcell | Technológiapolitikai kutató, Budapest" />
+<meta name="twitter:description" content="Kovács Marcell mérnökinformatikus, közgazdász és politológus Budapesten. A félvezető-iparpolitikát és a technológiai cégek növekedését kutatja." />
+<meta name="twitter:image" content="https://marcellkovacs.me/og-image.jpg" />
+<meta name="twitter:image:alt" content="Kovács Marcell portréja" />
+
+<!-- Structured data: the Hungarian profile page. The Person and the WebSite are
+     described in full once, on the English page (/). Here they keep the same @id,
+     so they are the same two nodes, not new ones, and repeat only the fields that
+     identify them, because search engines read structured data one page at a time
+     and a profile page needs its person's name on the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://marcellkovacs.me/hu/#profilepage",
+      "url": "https://marcellkovacs.me/hu/",
+      "name": "Kovács Marcell",
+      "inLanguage": "hu",
+      "dateModified": "2026-11-16",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://marcellkovacs.me/#website",
+        "url": "https://marcellkovacs.me/",
+        "name": "Marcell Kovács"
+      },
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://marcellkovacs.me/#person",
+        "name": "Marcell Kovács",
+        "alternateName": "Kovács Marcell",
+        "url": "https://marcellkovacs.me/"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- the two Instrument Serif files that render the hero name -->
+<link rel="preload" href="/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css?v=20261116">
+<noscript><style>.intro-curtain,.cursor-dot,.cursor-ring,.railToggle{display:none}.reveal{opacity:1;transform:none}body:not(.intro-done) .hero *{opacity:1!important;animation:none!important}body:not(.scrolled) .topbar{color:var(--ink-2)}</style></noscript>
+
+</head>
+<body>
+
+<div class="intro-curtain" id="introCurtain" aria-hidden="true">
+  <div class="ic-meta"><span>KOVÁCS MARCELL</span><span>SZEMÉLYES INDEX</span><span>BUDAPEST</span></div>
+  <div class="ic-mark">interdiszciplináris<span class="dot"></span></div>
+  <div class="ic-line"></div>
+</div>
+
+<script>
+(function(){
+  const c = document.getElementById('introCurtain');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){ document.body.classList.add('intro-done'); c.remove(); return; }
+  setTimeout(()=>{ c.classList.add('lift'); document.body.classList.add('intro-done'); }, 850);
+  setTimeout(()=>{ c.remove(); }, 1600);
+})();
+</script>
+
+<div class="grain"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot"  id="cursorDot"></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <span class="live"><span>Elérhető<span class="loc"> / Budapest, EU</span></span></span>
+  <span><span class="serif italic" style="font-style:italic;text-transform:none;letter-spacing:0;font-size:14px">Kovács Marcell</span> / 2026</span>
+  <div class="tb-right">
+    <nav class="lang" aria-label="Nyelv">
+      <a href="/" hreflang="en" lang="en" aria-label="EN, English version">EN</a><span class="sep" aria-hidden="true">/</span><span class="cur" aria-current="true">HU</span>
+    </nav>
+    <button class="modetoggle" id="modeToggle">Világos / Sötét</button>
+  </div>
+</header>
+
+<!-- SIDE RAIL -->
+<button class="railToggle" id="railToggle" aria-expanded="false" aria-controls="rail" aria-label="Navigáció megnyitása vagy bezárása"><span class="chev"></span></button>
+<nav class="rail closed" id="rail" aria-label="Fejezetek">
+  <a href="#hero" data-target="hero">00 / Index</a>
+  <a href="#about" data-target="about">01 / Rólam</a>
+  <a href="#research" data-target="research">02 / Kutatás</a>
+  <a href="#experience" data-target="experience">03 / Tapasztalat</a>
+  <a href="#education" data-target="education">04 / Tanulmányok</a>
+  <a href="#speaking" data-target="speaking">05 / Előadások</a>
+  <a href="#awards" data-target="awards">06 / Díjak</a>
+  <a href="#civic" data-target="civic">07 / Közélet</a>
+  <a href="#now" data-target="now">08 / Most</a>
+  <a href="#contact" data-target="contact">09 / Kapcsolat</a>
+</nav>
+
+<main>
+<!-- =================== HERO =================== -->
+<section class="hero" id="hero" data-screen-label="00 Hero">
+  <div class="bgwrap">
+    <canvas id="netCanvas"></canvas>
+    <div class="vignette"></div>
+    <div class="scanlines"></div>
+  </div>
+
+  <div class="meta-tl">
+    Személyes index<br>
+    Frissítve / 2026. november
+  </div>
+  <div class="meta-tr">
+    47,4979° É<br>
+    19,0402° K / Budapest
+  </div>
+
+  <div class="title">
+    <div class="eyebrow"><span class="dot"></span>Személyes index / I.&nbsp;kötet / 2026<span class="dot"></span></div>
+    <h1 id="heroName">
+      Kovács <span class="ital">Marcell</span>
+    </h1>
+    <div class="nameHu">Marcell Kovács / angolul</div>
+    <p class="tag">
+      Mérnökinformatikus. Közgazdász. Politológus. A&nbsp;<em>technológiapolitikát</em> és a <em>technológiai cégek növekedését</em> kutatom.
+    </p>
+  </div>
+
+  <div class="meta-bl">
+    Tudományágak gráfja / 6 csomópont<br>
+    Élő / interaktív
+  </div>
+  <div class="meta-br">
+    Lejjebb: <span style="color:#a8b8ff">↓</span> billentyű<br>
+    vagy húzd át a kurzort a gráfon
+  </div>
+
+  <div class="scroll-cue">Görgess</div>
+</section>
+
+<!-- =================== TICKER =================== -->
+<div class="ticker" id="ticker">
+  <div class="row" id="tickerRow">
+    <span>ITIF / Innovációs index 3.0</span>
+    <span>Közgazdasági Szemle 2026</span>
+    <span>Technológiai Jövők Műhely</span>
+    <span>Gránit / Grandio Blog</span>
+    <span lang="en">European Forum Alpbach</span>
+    <span>GTIPA-csúcstalálkozó, Varsó</span>
+    <span>GLOBAFA Budapest és Madrid</span>
+    <span>ISEG, Lisszabon</span>
+    <span>Publikációs nívódíj 2026</span>
+    <span>TSMC / Technonacionalizmus</span>
+    <span lang="en">CHIPS &amp; Science Act</span>
+    <span>V4 × kelet-ázsiai elektromos autók</span>
+    <span>EBES Párizs 2026</span>
+    <span lang="en">Creative Destruction Lab Berlin</span>
+    <span>Egység a Kapcsolódásban Alapítvány</span>
+    <span>Ifjúsági Tanács, amerikai nagykövetség</span>
+    <span lang="en">Battle of Ideas, London</span>
+    <span>Európai Parlament, Brüsszel</span>
+    <span>Ars Electronica, Linz</span>
+    <span lang="en">Barcelona School of Economics</span>
+    <span>Jagelló Egyetem, Krakkó</span>
+    <span>Arizonai Állami Egyetem, Phoenix</span>
+    <span lang="en">Istanbul Aydın University</span>
+    <div class="loopcopy" aria-hidden="true">
+      <span>ITIF / Innovációs index 3.0</span>
+      <span>Közgazdasági Szemle 2026</span>
+      <span>Technológiai Jövők Műhely</span>
+      <span>Gránit / Grandio Blog</span>
+      <span lang="en">European Forum Alpbach</span>
+      <span>GTIPA-csúcstalálkozó, Varsó</span>
+      <span>GLOBAFA Budapest és Madrid</span>
+      <span>ISEG, Lisszabon</span>
+      <span>Publikációs nívódíj 2026</span>
+      <span>TSMC / Technonacionalizmus</span>
+      <span lang="en">CHIPS &amp; Science Act</span>
+      <span>V4 × kelet-ázsiai elektromos autók</span>
+      <span>EBES Párizs 2026</span>
+      <span lang="en">Creative Destruction Lab Berlin</span>
+      <span>Egység a Kapcsolódásban Alapítvány</span>
+      <span>Ifjúsági Tanács, amerikai nagykövetség</span>
+      <span lang="en">Battle of Ideas, London</span>
+      <span>Európai Parlament, Brüsszel</span>
+      <span>Ars Electronica, Linz</span>
+      <span lang="en">Barcelona School of Economics</span>
+      <span>Jagelló Egyetem, Krakkó</span>
+      <span>Arizonai Állami Egyetem, Phoenix</span>
+      <span lang="en">Istanbul Aydın University</span>
+    </div>
+  </div>
+</div>
+
+<div class="numdivider"><div class="big">01</div><div class="lbl">Rólam<em>Hat terület, egy kutató</em></div></div>
+
+<!-- =================== ABOUT =================== -->
+<section id="about" data-screen-label="01 About">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span><span class="num">01</span> &nbsp;/&nbsp; <span class="name">Rólam</span></span>
+      <span>Hat terület, egy kutató</span>
+    </div>
+    <div class="grid">
+      <div class="lede reveal">
+        <p>Mérnökinformatikusként kezdtem, aztán politológus lettem, majd közgazdász. Nem pályát váltottam, csak nem voltam hajlandó választani.</p>
+        <p>Ott dolgozom, ahol a kód, a tőke és a politika egymásnak feszül: hogyan jut el egy technológiai cég a startuptól a scaleupon át az unikornisig, mivel segíti vagy gátolja ezt az állam, és hogyan árazza be mindezt a piac. Többnyire félvezetőkről és mesterséges intelligenciáról van szó.</p>
+        <p>Kutatok, írok, szervezetet építek, és képviselem, amiben hiszek. Publikálok a washingtoni ITIF kiadványaiban és a Közgazdasági Szemlében, és ugyanezekkel a kérdésekkel a gyakorlatban is foglalkozom: a vállalati szoftverektől egy mélytechnológiai startup mentorálásán át egy alapítvány vezetéséig.</p>
+        <div class="stats reveal" id="aboutStats">
+          <div><div class="n" data-count="4">4</div><div class="lab">szak négy szakterületen</div></div>
+          <div><div class="n" data-count="8">8</div><div class="lab">egyetem, ahol tanultam</div></div>
+          <div><div class="n" data-count="5">5</div><div class="lab">előadás: EBES és GLOBAFA</div></div>
+          <div><div class="n" data-count="15">15</div><div class="lab">ország, ahol dolgoztam vagy tanultam</div></div>
+        </div>
+      </div>
+      <div class="portrait reveal">
+        <div class="frame">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <!-- Full-resolution source on purpose: the browser scales it down exactly as before, so the portrait stays as sharp on high-density screens. WebP keeps it far lighter than the JPEG fallback. -->
+          <picture>
+            <source type="image/webp" srcset="/marcell-kovacs-2048.webp" />
+            <img src="/marcell.jpg" width="2048" height="2047" alt="Kovács Marcell" loading="lazy" />
+          </picture>
+        </div>
+        <div class="cap">
+          <span><b>Kovács Marcell</b> / Budapest</span>
+          <span>Fotó / 2026</span>
+        </div>
+        <p class="scribble">Többnyire egy tanulmány, egy előadóterem és egy hetedik kerületi kávé között ingázom. Angolul a keresztnév áll elöl: Marcell Kovács. Akkor vagyok igazán elememben, amikor egy probléma nem fér bele egyetlen szakterületbe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="numdivider"><div class="big">02</div><div class="lbl">Kutatás<em>A szilícium politikája</em></div></div>
+<!-- =================== RESEARCH =================== -->
+<section id="research" data-screen-label="02 Research">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span><span class="num">02</span> &nbsp;/&nbsp; <span class="name">Kutatás és publikációk</span></span>
+      <span>Válogatott publikációk / 2023 → 2026</span>
+    </div>
+    <h2 class="h-display reveal">Tanulmányok a <span class="ital">félvezető-iparpolitikáról</span>, a technológiai háborúról és arról, hogyan nőnek nagyra a techcégek.</h2>
+    <div class="pubs" id="pubs" style="margin-top:64px">
+      <div class="pub">
+        <div class="yr">2026</div>
+        <h3 class="ttl" lang="en"><a class="tlink" href="https://itif.org/publications/2026/09/08/transatlantic-subnational-innovation-competitiveness-index-3-0/" target="_blank" rel="noopener">Transatlantic Subnational Innovation Competitiveness Index 3.0</a></h3>
+        <div class="meta"><b>ITIF, Washington D.C.</b>Jelentés<br>Társszerző<br>213&nbsp;régió, 13&nbsp;ország</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2026</div>
+        <h3 class="ttl"><a class="tlink" href="https://doi.org/10.18414/KSZ.2026.6.654" target="_blank" rel="noopener">A technológiai háború nyertesei és vesztesei: Az Egyesült Államok félvezetőipari politikájára adott piaci reakciók</a></h3>
+        <div class="meta"><b>Közgazdasági Szemle 73(6), 654-680</b>Folyóiratcikk, lektorált<br>Szunomár&nbsp;Ágnessel<br>magyar nyelvű<br>DOI 10.18414/KSZ.2026.6.654</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2026</div>
+        <h3 class="ttl" lang="en">Semiconductor Industrial Policy and Asymmetric Market Expectations: Evidence from the US CHIPS and Science Act and Implications for Central and Eastern Europe</h3>
+        <div class="meta"><b lang="en">Society and Economy</b>Folyóiratcikk, közlésre elfogadva<br>Szunomár&nbsp;Ágnessel</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2026</div>
+        <h3 class="ttl" lang="en">Firm-Level Valuation in the New Wave of Techno-Nationalism: The Cases of TSMC Phoenix, Intel Magdeburg, and Rapidus Japan Investments</h3>
+        <div class="meta"><b>55. EBES-konferencia, Budapest</b>Absztrakt<br>Egyedüli szerző<br>ISBN 978-625-95653-6-1</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2026</div>
+        <h3 class="ttl" lang="en">New Wave of Techno-Nationalism? The Case of TSMC's U.S. Investment Phases</h3>
+        <div class="meta"><b>54. EBES-konferencia, Párizs</b>Absztrakt<br>Egyedüli szerző<br>ISBN 978-625-95653-5-4</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2025</div>
+        <h3 class="ttl" lang="en">Global Financial Market Reactions to U.S. Semiconductor Industrial Policy</h3>
+        <div class="meta"><b>1. GLOBAFA-konferencia, Budapest</b>Absztrakt<br>Egyedüli szerző<br>ISBN 978-625-95653-2-3</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2025</div>
+        <h3 class="ttl" lang="en">The Economic Impact of Industrial Policy on the Global Semiconductor Supply Chain: An Event Study of the CHIPS and Science Act Passing Through the U.S. House of Representatives</h3>
+        <div class="meta"><b>51. EBES-konferencia, Róma</b>Absztrakt<br>Egyedüli szerző<br>ISBN 978-625-95653-1-6</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2025</div>
+        <h3 class="ttl" lang="en"><a class="tlink" href="https://ceias.eu/central-europe-east-asia-ev-nexus/" target="_blank" rel="noopener">Central Europe–East Asia EV Nexus: Tracking Chinese, South Korean and Japanese EV and battery investment in the V4</a></h3>
+        <div class="meta"><b>CEIAS</b>Jelentés<br>Társszerzőként Martin&nbsp;Šebeňával, Szunomár&nbsp;Ágnessel és másokkal<br>ISBN 978-80-8239-029-5</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2024</div>
+        <h3 class="ttl" lang="en"><a class="tlink" href="https://litglomedia.com/" target="_blank" rel="noopener">Media Literacy Exchange: Insights from Oxford</a></h3>
+        <div class="meta"><b>LitGloMedia blog</b>Esszé<br>Hullán Lucával</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2023</div>
+        <h3 class="ttl" lang="en">Technology &amp; Challenges of Democracy</h3>
+        <div class="meta"><b lang="en">ASU Study of U.S. Institutes Blog</b>Esszé<br>Eni Shtjefnivel</div>
+      </div>
+      <div class="pub">
+        <div class="yr">Készül</div>
+        <h3 class="ttl" lang="en">Where the Chips Fall: What Turns a European Scaleup into a Unicorn?</h3>
+        <div class="meta"><b>Műhelytanulmány</b>762 félvezetőipari scaleup egy 31&nbsp;600 európai techcéget tartalmazó adatbázisban</div>
+      </div>
+    </div>
+    <div class="analyses" id="analyses">
+      <div class="eyebrow-row">
+        <h3 class="name">Szakpolitikai és piaci elemzések</h3>
+        <span><a class="uline" href="https://granitalapkezelo.hu/szerzoink/kovacsm/" target="_blank" rel="noopener">Grandio Blog</a>, Gránit Alapkezelő / 2026</span>
+      </div>
+      <div class="pubs">
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/grandioblog/memoriachip-hiany-ai-rekordprofit-hbm/" target="_blank" rel="noopener">Rekordhiány, rekordprofit: meddig tart a memóriagyártók aranykora?</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/grandioblog/nvidia-ai-beruhazasok-finanszirozasa-hiperskalazok-hitel/" target="_blank" rel="noopener">Rekord a rekord után, hitelből fizetve</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/grandioblog/openai-anthropic-ai-ipo-ertekeltseg/" target="_blank" rel="noopener">Az AI tőzsdére lépési hullám következő nagy tesztje</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/grandioblog/european-chips-act-2-0-europa-chipverseny/" target="_blank" rel="noopener">Fel tud-e zárkózni Európa a nemzetközi chipversenyben? Mire elég a <span lang="en">European Chips Act 2.0</span>?</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/grandioblog/tajvan-sziliciumpajzs-tsmc-chipgyartas/" target="_blank" rel="noopener">A sziget, amelytől a világgazdaság függ: meddig védi Tajvant a szilíciumpajzs?</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/grandioblog/hips-act-fabless-chipcegek-nyertesei/" target="_blank" rel="noopener">A CHIPS Act paradoxona: hogyan lettek a gyár nélküli chipcégek a technológiai háború nyertesei?</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/grandioblog/ai-exportkontroll-lekapcsolhatosag-technologiai-fuggoseg/" target="_blank" rel="noopener">A függőség ára: amikor egy csúcs AI-modellt Washington kapcsol le</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/grandioblog/europai-vedelmi-scaleupok-rearm-europe/" target="_blank" rel="noopener">Európai védelmi scaleupok: ki keres igazából a ReArm Europe 800 milliárd euróján?</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/grandioblog/modern-hadviseles-gazdasagi-paradoxona-olcso-dronok-draga-vedelem/" target="_blank" rel="noopener">Olcsó drónok, drága védelem: a modern hadviselés költségcsapdája</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/grandioblog/ur-adatkozpont-ai-energia-halozat-hutes/" target="_blank" rel="noopener">Miért építene Elon Musk adatközpontokat az űrbe? Az AI-korszak és az energia mint szűk keresztmetszet</a></h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== EXPERIENCE =================== -->
+<section id="experience" data-screen-label="03 Experience">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span><span class="num">03</span> &nbsp;/&nbsp; <span class="name">Szakmai tapasztalat</span></span>
+      <span>Gyakornokság → Kutatás</span>
+    </div>
+    <div class="wrap2">
+      <p class="legend">2015-ben szoftverfejlesztő gyakornokként kezdtem egy mezőgazdasági gépeket gyártó cégnél. Ma azt kutatom, hogyan nőnek nagyra a techcégek. 2026-ban cikkem jelent meg a Közgazdasági Szemlében, és egy ITIF-index társszerzője lettem.</p>
+      <ol id="expList">
+        <li>
+          <div class="per">2025 → ma</div>
+          <div class="role">Junior kutató</div>
+          <div class="org">Technológiai Jövők Műhely (Nemzeti Tehetség Központ, NTK)</div>
+          <div class="nt">Cséfalvay Zoltán professzorral: hogyan lesz a startupokból scaleup és unikornis; félvezető-iparpolitika</div>
+        </li>
+        <li>
+          <div class="per">2026 → ma</div>
+          <div class="role">Vendégszerző, technológia és geopolitika</div>
+          <div class="org">Gránit Alapkezelő</div>
+          <div class="nt">Saját névvel jegyzett elemzések félvezetőkről, MI-exportkorlátozásokról, védelmi scaleupokról és a piacokról (Grandio Blog)</div>
+        </li>
+        <li>
+          <div class="per">2024 → ma</div>
+          <div class="role">EKÖP-ösztöndíjas kutató</div>
+          <div class="org">Budapesti Corvinus Egyetem</div>
+          <div class="nt">Országos kutatói ösztöndíj: a chiptámogatások és az exportkorlátozások piaci hatásai, eseményelemzés</div>
+        </li>
+        <li>
+          <div class="per">2025 → ma</div>
+          <div class="role">Társalapító és elnök</div>
+          <div class="org">Egység a Kapcsolódásban Alapítvány</div>
+          <div class="nt"><span lang="en">Unity in Connectivity Foundation</span> (hunicon.org)</div>
+        </li>
+        <li>
+          <div class="per">2025 → 26</div>
+          <div class="role">Óraadó oktató, statisztika</div>
+          <div class="org">Budapesti Műszaki és Gazdaságtudományi Egyetem (BME)</div>
+          <div class="nt">Önállóan tartottam a valószínűség-számítási és statisztikai gyakorlatokat</div>
+        </li>
+        <li>
+          <div class="per">2025 → 26</div>
+          <div class="role">Diákmentor</div>
+          <div class="org" lang="en">Creative Destruction Lab Berlin</div>
+          <div class="nt">Az ESMT Berlin mélytechnológiai gyorsítóprogramja; az <span lang="en">Axiom Therapeutics</span> csapatával dolgoztam (MI-alapú gyógyszerkutatás)</div>
+        </li>
+        <li>
+          <div class="per">2024 → 25</div>
+          <div class="role">Kutatási asszisztens</div>
+          <div class="org">Corvinus, Globális Tanulmányok Intézet</div>
+          <div class="nt">A Visegrádi Alap támogatásával: kelet-ázsiai elektromosautó-gyártók <span class="nb">a V4-országok</span> elektromobilitási átállásában</div>
+        </li>
+        <li>
+          <div class="per">2023 → ma</div>
+          <div class="role">Alapító</div>
+          <div class="org">LitGloMedia</div>
+          <div class="nt">A <span lang="en">Meridian International Center</span> és az amerikai külügyminisztérium támogatásával (litglomedia.com)</div>
+        </li>
+        <li>
+          <div class="per">2022 → 23</div>
+          <div class="role">Résztvevő</div>
+          <div class="org" lang="en">Hungarian Startup University Program</div>
+          <div class="nt">Kétféléves startupképzés</div>
+        </li>
+        <li>
+          <div class="per">2021</div>
+          <div class="role">Fejlesztő, ERP és kontrolling</div>
+          <div class="org">Petasoft Kft.</div>
+          <div class="nt">Hallgatói csapatot koordináltam; adatokat gyűjtöttünk és dolgoztunk fel egy <span lang="en">EY&nbsp;EasyBusiness</span> ERP-rendszerhez</div>
+        </li>
+        <li>
+          <div class="per">2019 → 21</div>
+          <div class="role">Az Ifjúsági Tanács tagja</div>
+          <div class="org">Az Egyesült Államok budapesti nagykövetsége</div>
+          <div class="nt">Digitális pénzügyi tudatosság, a Pénzmúzeummal közösen</div>
+        </li>
+        <li>
+          <div class="per">2015</div>
+          <div class="role">Szoftverfejlesztő gyakornok</div>
+          <div class="org">CLAAS Hungária Kft.</div>
+          <div class="nt">Egyedül készítettem el egy vezetői adatkezelő rendszert a specifikációtól az átadásig, a K+F mérnöki támogatás csapatában</div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="numdivider"><div class="big">04</div><div class="lbl">Tanulmányok<em>Nyolc iskola, egy ív</em></div></div>
+<!-- =================== EDUCATION =================== -->
+<section id="education" data-screen-label="04 Education">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span><span class="num">04</span> &nbsp;/&nbsp; <span class="name">Tanulmányok</span></span>
+      <span>Nyolc egyetem / Európa és Észak-Amerika</span>
+    </div>
+    <h2 class="h-display reveal">Nyolc egyetem, <span class="ital">négy</span> szakterület.</h2>
+    <div class="grid">
+      <div class="map-wrap reveal" id="mapWrap">
+        <svg class="mapsvg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" id="worldSvg"></svg>
+        <div id="pins"></div>
+      </div>
+      <div class="schools reveal" id="schools">
+        <div class="school" data-i="0" data-city="Budapest" data-lat="47.50" data-lng="19.04">
+          <div class="yr"><span>2022 → ma</span><span class="city">Budapest</span></div>
+          <h3>Budapesti Corvinus Egyetem</h3>
+          <ul class="degs">
+            <li><span class="deg">Nemzetközi gazdaság és gazdálkodás MSc</span><span class="per">2025 → ma</span></li>
+            <li><span class="deg">Politológia BA</span><span class="per">2022 → 25</span></li>
+          </ul>
+        </div>
+        <div class="school" data-i="1" data-city="Budapest" data-lat="47.48" data-lng="19.06">
+          <div class="yr"><span>2018 → 22</span><span class="city">Budapest</span></div>
+          <h3>Budapesti Műszaki és Gazdaságtudományi Egyetem</h3>
+          <ul class="degs">
+            <li><span class="deg">Mérnökinformatikus BSc, vállalati információs rendszerek szakirány</span><span class="per">Átlag: 4,73</span></li>
+            <li><span class="deg">Tehetséggondozó program</span></li>
+            <li><span class="deg">Vendéghallgató a Corvinuson: gazdasági és pénzügyi matematikai elemzés</span></li>
+            <li><span class="deg">Szakdolgozat: <span lang="en">Analyzing the Effects of News on Stock Prices Using Statistical Methods</span></span></li>
+          </ul>
+        </div>
+        <div class="school" data-i="2" data-city="Debrecen" data-lat="47.53" data-lng="21.63">
+          <div class="yr"><span>2026 → ma</span><span class="city">Debrecen</span></div>
+          <h3>Debreceni Egyetem</h3>
+          <p>Mentálhigiénés szakirányú továbbképzés: segítő beszélgetés és tanácsadási készségek</p>
+        </div>
+        <div class="school" data-i="3" data-city="Krakkó" data-lat="50.06" data-lng="19.94">
+          <div class="yr"><span>2023 tele</span><span class="city">Krakkó</span></div>
+          <h3>Jagelló Egyetem</h3>
+          <p>Nemzetközi kapcsolatok és komplexitáselmélet</p>
+        </div>
+        <div class="school" data-i="4" data-city="Phoenix" data-lat="33.45" data-lng="-112.07">
+          <div class="yr"><span>2023 nyara</span><span class="city">Phoenix</span></div>
+          <h3>Arizonai Állami Egyetem</h3>
+          <p>Újságírás és média, az amerikai külügyminisztérium SUSI-ösztöndíjasaként</p>
+        </div>
+        <div class="school" data-i="5" data-city="Barcelona" data-lat="41.39" data-lng="2.16">
+          <div class="yr"><span>2024 és 2025</span><span class="city">Barcelona</span></div>
+          <h3 lang="en">Barcelona School of Economics</h3>
+          <ul class="degs">
+            <li><span class="deg">Digitális gazdaságtan</span><span class="per">2024</span></li>
+            <li><span class="deg">Fejlődés-gazdaságtan, ezen belül komplex hálózatok elemzése</span><span class="per">2025</span></li>
+          </ul>
+        </div>
+        <div class="school" data-i="6" data-city="Isztambul" data-lat="41.01" data-lng="28.97">
+          <div class="yr"><span>2025 és 2026</span><span class="city">Isztambul</span></div>
+          <h3 lang="en">Istanbul Aydın University</h3>
+          <ul class="degs">
+            <li><span class="deg">Digitális marketing</span></li>
+            <li><span class="deg">Genetika és orvosi biotechnológia</span></li>
+          </ul>
+        </div>
+        <div class="school" data-i="7" data-city="Lisszabon" data-lat="38.72" data-lng="-9.14">
+          <div class="yr"><span>2026</span><span class="city">Lisszabon</span></div>
+          <h3 lang="en">ISEG Lisbon School of Economics and Management</h3>
+          <ul class="degs">
+            <li><span class="deg">Szöveges és nem hagyományos adatok közgazdasági elemzése</span></li>
+            <li><span class="deg">Gazdaságtörténet</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SPEAKING =================== -->
+<section id="speaking" data-screen-label="05 Speaking">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span><span class="num">05</span> &nbsp;/&nbsp; <span class="name">Előadások és konferenciák</span></span>
+      <span>14 város / Alpbach / Párizs / Madrid / Varsó&nbsp;/&nbsp;D.C.</span>
+    </div>
+    <h2 class="h-display reveal">Konferenciák, <span class="ital">kerekasztalok</span> és tanulmányutak.</h2>
+    <div class="grid" id="speak" style="margin-top:64px">
+      <div class="card">
+        <div class="yr">2026</div>
+        <div class="v" lang="en">European Forum Alpbach</div>
+        <div class="c"><span>Alpbach</span><span class="role">Workshopvezető / Előadó</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2026</div>
+        <div class="v">GTIPA-csúcstalálkozó, Varsói Egyetem</div>
+        <div class="c"><span>Varsó</span><span class="role">Előadó</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2026</div>
+        <div class="v">2. GLOBAFA-konferencia</div>
+        <div class="c"><span>Madrid</span><span class="role">Előadó</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2026</div>
+        <div class="v">55. EBES-konferencia</div>
+        <div class="c"><span>Budapest</span><span class="role">Előadó / Szervezőcsapat</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2026</div>
+        <div class="v">54. EBES-konferencia</div>
+        <div class="c"><span>Párizs</span><span class="role">Előadó</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2025</div>
+        <div class="v">1. GLOBAFA-konferencia</div>
+        <div class="c"><span>Budapest</span><span class="role">Előadó</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2025</div>
+        <div class="v">51. EBES-konferencia</div>
+        <div class="c"><span>Róma</span><span class="role">Előadó</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2025</div>
+        <div class="v">Corvinus TDK-konferencia</div>
+        <div class="c"><span>Budapest</span><span class="role">1. helyezés</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2024</div>
+        <div class="v" lang="en">Harvard Law School</div>
+        <div class="c"><span>Cambridge, MA</span><span class="role">Tanulmányút</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2024</div>
+        <div class="v">Európai Ifjúsági Hét, Európai Parlament</div>
+        <div class="c"><span>Brüsszel</span><span class="role">Résztvevő</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2024</div>
+        <div class="v"><span lang="en">Study of U.S. Institutes</span>, nyitórendezvény</div>
+        <div class="c"><span>Online / Washington D.C.</span><span class="role">Panelista</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2023/24</div>
+        <div class="v">ENSZ</div>
+        <div class="c"><span>New York / Bécs</span><span class="role">Tanulmányút</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2023/24</div>
+        <div class="v">OECD</div>
+        <div class="c"><span>Párizs</span><span class="role">Tanulmányút</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2023</div>
+        <div class="v" lang="en">Battle of Ideas</div>
+        <div class="c"><span>London</span><span class="role">Résztvevő</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2023</div>
+        <div class="v" lang="de">Deutsch-Ungarisches Institut</div>
+        <div class="c"><span>Zürich</span><span class="role">Résztvevő</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2023</div>
+        <div class="v"><span lang="en">Study of U.S. Institutes</span>, nyitórendezvény</div>
+        <div class="c"><span>Washington D.C.</span><span class="role">Résztvevő</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2018</div>
+        <div class="v">Ars Electronica</div>
+        <div class="c"><span>Linz</span><span class="role">Magyarország képviseletében</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="numdivider"><div class="big">06</div><div class="lbl">Díjak<em>Túlzás nélkül</em></div></div>
+<!-- =================== AWARDS =================== -->
+<section id="awards" data-screen-label="06 Awards">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span><span class="num">06</span> &nbsp;/&nbsp; <span class="name">Díjak és elismerések</span></span>
+      <span>Matematika / Kutatás / Vállalkozás</span>
+    </div>
+    <h2 class="h-display reveal">Díjak <span class="ital">kutatásért</span>, matematikáért és vállalkozásért.</h2>
+    <div class="list" id="awardList" style="margin-top:48px">
+      <div class="row">
+        <div class="yr">2026</div>
+        <div class="nm">Publikációs nívódíj</div>
+        <div class="nt">Budapesti Corvinus Egyetem</div>
+      </div>
+      <div class="row">
+        <div class="yr">2025</div>
+        <div class="nm">Corvinus TDK-konferencia</div>
+        <div class="nt">1. helyezés</div>
+      </div>
+      <div class="row">
+        <div class="yr">2024</div>
+        <div class="nm">Az amerikai külügyminisztérium díja</div>
+        <div class="nt">A <span lang="en">SUSI Mini Grant</span> sikeres megvalósításáért (LitGloMedia)</div>
+      </div>
+      <div class="row">
+        <div class="yr">2023</div>
+        <div class="nm"><span lang="en">Danube Cup</span> nemzetközi vállalkozói verseny</div>
+        <div class="nt">2. helyezés Magyarországon, nemzetközi döntő Regensburgban</div>
+      </div>
+      <div class="row">
+        <div class="yr">2023</div>
+        <div class="nm">Az Európai Űrügynökség (ESA) technológiatranszfer-versenye</div>
+        <div class="nt">3. helyezés</div>
+      </div>
+      <div class="row">
+        <div class="yr">2021</div>
+        <div class="nm">BME GTK TDK-konferencia</div>
+        <div class="nt">A Magyar Nemzeti Bank különdíja kiemelkedő <span class="nb">TDK-dolgozatért</span></div>
+      </div>
+      <div class="row">
+        <div class="yr">2019</div>
+        <div class="nm">BME matematikaverseny</div>
+        <div class="nt"><span lang="en">Morgan Stanley</span>-különdíj</div>
+      </div>
+      <div class="row">
+        <div class="yr">2019</div>
+        <div class="nm">BME × Magyar Nemzeti Bank kutatási verseny</div>
+        <div class="nt">Különdíj, „A pénz jövője”</div>
+      </div>
+      <div class="row">
+        <div class="yr">2019</div>
+        <div class="nm" lang="en">Nokia Codejam</div>
+        <div class="nt">Díj</div>
+      </div>
+      <div class="row">
+        <div class="yr"></div>
+        <div class="nm">&lt;19 Szabadfogású Számítógép Verseny</div>
+        <div class="nt">Díj</div>
+      </div>
+      <div class="row">
+        <div class="yr"></div>
+        <div class="nm">Országos Középiskolai Tanulmányi Verseny (OKTV), informatika</div>
+        <div class="nt">Elismerés</div>
+      </div>
+      <div class="row">
+        <div class="yr"></div>
+        <div class="nm">CheckINN turisztikai innovációs verseny</div>
+        <div class="nt">Döntős</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CIVIC =================== -->
+<section id="civic" data-screen-label="07 Civic">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span><span class="num">07</span> &nbsp;/&nbsp; <span class="name">Alapítvány és közélet</span></span>
+      <span>Alapítvány / Médiaműveltség / Hallgatói képviselet</span>
+    </div>
+    <h2 class="h-display reveal">Alapítványi munka és <span class="ital">közéleti</span> szerepek.</h2>
+    <div class="grid" id="civicGrid" style="margin-top:48px">
+      <div class="card">
+        <div class="role">Társalapító és elnök</div>
+        <h3><a class="tlink" href="https://hunicon.org" target="_blank" rel="noopener">Egység a Kapcsolódásban Alapítvány</a></h3>
+        <p>Magyar alapítvány, amely abban segíti a fiatalokat, hogy boldoguljanak a digitális korban. Témáink: magány, közösségi terek, digitális szokások és digitális írástudás.</p>
+      </div>
+      <div class="card">
+        <div class="role">Alapító</div>
+        <h3><a class="tlink" href="https://litglomedia.com/" target="_blank" rel="noopener">LitGloMedia</a></h3>
+        <p>Médiaműveltségi terepmunka az Egyesült Királyságban, Írországban és Hollandiában; az eredményeket magyar középiskolákban mutattuk be.</p>
+      </div>
+      <div class="card">
+        <div class="role">Tag, 2019 → 21</div>
+        <h3>Az Egyesült Államok budapesti nagykövetségének Ifjúsági Tanácsa</h3>
+        <p>Partnereink voltak: a prágai amerikai nagykövetség Ifjúsági Tanácsa, az EPA és a <span lang="en">National Museum of American Diplomacy</span>.</p>
+      </div>
+      <div class="card">
+        <div class="role">Választott képviselő, 2021</div>
+        <h3>Hallgatói Képviselet, BME</h3>
+        <p>Az oktatási és a kommunikációs csapatban dolgoztam, és tagja voltam a kar Gazdasági Bizottságának és Tanulmányi Bizottságának.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== NOW =================== -->
+<section id="now" data-screen-label="08 Now">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span><span class="num">08</span> &nbsp;/&nbsp; <span class="name">Most</span></span>
+      <span>Állapot: 2026. november</span>
+    </div>
+    <h2 class="h-display">Amin <span class="ital">most</span> dolgozom.</h2>
+    <div class="lines" id="nowLines">
+      <div class="line"><div class="k">Kutatok</div><div class="v"><span lang="en">Where the Chips Fall</span>: mely európai félvezetőipari scaleupokból lesz unikornis.</div></div>
+      <div class="line"><div class="k">Írok</div><div class="v">Szakpolitikai és piaci elemzéseket a Gránit Alapkezelő Grandio Blogjára.</div></div>
+      <div class="line"><div class="k">Tanulok</div><div class="v">Befejezem a mesterképzést a Corvinuson, és most kezdtem el a mentálhigiénés szakirányú továbbképzést.</div></div>
+      <div class="line"><div class="k">Építek</div><div class="v">Az Egység a Kapcsolódásban Alapítvány 2027-es programjait.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- marquee signature -->
+<div class="signmarquee">
+  <div class="row" id="signRow">
+    <span>Mérnökinformatikus</span>
+    <span>Politológus</span>
+    <span>Közgazdász</span>
+    <span>Kutató</span>
+    <span>Alapító</span>
+    <div class="loopcopy" aria-hidden="true">
+      <span>Mérnökinformatikus</span>
+      <span>Politológus</span>
+      <span>Közgazdász</span>
+      <span>Kutató</span>
+      <span>Alapító</span>
+    </div>
+  </div>
+</div>
+<!-- =================== CONTACT =================== -->
+<section id="contact" data-screen-label="09 Contact">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span><span class="num">09</span> &nbsp;/&nbsp; <span class="name">Kapcsolat</span></span>
+      <span>Együttműködés: kutatás / oktatás / tanácsadás / cégalapítás</span>
+    </div>
+    <h2><span class="ital">Építsünk</span>, kutassunk vagy tanítsunk <span class="ital">valamit</span> együtt.</h2>
+    <div class="channels">
+      <a class="magnetic" id="emailLink" href="#" rel="nofollow">
+        <span class="k">E-mail</span>
+        <span class="v uline" id="emailText">[ megjelenítés ]</span>
+      </a>
+      <a class="magnetic" href="https://www.linkedin.com/in/marcellkov/" target="_blank" rel="me noopener">
+        <span class="k">LinkedIn</span>
+        <span class="v uline">linkedin.com/in/marcellkov</span>
+      </a>
+      <a class="magnetic" href="#hero">
+        <span class="k">Bázis</span>
+        <span class="v uline">Budapest, szívesen utazom</span>
+      </a>
+    </div>
+    <p class="elsewhere"><span class="k">Máshol</span>
+      <span class="nb"><a class="uline" href="https://itif.org/person/marcell-kovacs/" target="_blank" rel="me noopener">ITIF-profil</a> /</span>
+      <span class="nb"><a class="uline" href="https://github.com/kovacsmarcell" target="_blank" rel="me noopener">GitHub</a> /</span>
+      <span class="nb"><a class="uline" href="https://hunicon.org" target="_blank" rel="noopener">hunicon.org</a> /</span>
+      <a class="uline" href="https://litglomedia.com/" target="_blank" rel="noopener">LitGloMedia</a>
+    </p>
+    <div class="signoff">
+      <div class="avatar" aria-hidden="true"><picture><source type="image/webp" srcset="/marcell-kovacs-256.webp" /><img src="/marcell-kovacs-256.jpg" width="256" height="256" alt="" loading="lazy" decoding="async" /></picture></div>
+      <div class="lang">
+        Nyelvek<br>
+        Magyar, anyanyelv<br>
+        Angol, C1 (TOEFL iBT 115/120)
+      </div>
+      <div class="sig">„A világot leginkább az interdiszciplináris szemlélet viheti előre.”</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>© 2026 Kovács Marcell / Betűtípusok: Instrument Serif, Inter, JetBrains Mono</span>
+  <span>Személyes index / I.&nbsp;kötet / <a class="uline" href="/" hreflang="en" lang="en">English</a></span>
+  <a href="#hero" class="toTop" id="toTop" aria-label="Fel, vissza az oldal tetejére">Fel <span class="arr">↑</span></a>
+</footer>
+
+<script>
+// Assemble the contact email at runtime. The literal address never appears
+// in the served HTML or in any single string in this script, so regex-based
+// scrapers grepping the response body or this file find nothing. Humans
+// (and JS-aware crawlers, which are rarer) see a normal mailto link.
+(function(){
+  var a = document.getElementById('emailLink');
+  var t = document.getElementById('emailText');
+  if(!a || !t) return;
+  var u = ['ko','vacs','.marc','ell','99'].join('');
+  var d = ['gm','ail','.','com'].join('');
+  var addr = u + String.fromCharCode(64) + d;
+  // Set href only on first user interaction, not on load: even after
+  // JS runs, the document has no mailto: attribute for a scraper to find
+  // unless it actually hovers or clicks.
+  var arm = function(){
+    a.href = String.fromCharCode(109,97,105,108,116,111,58) + addr;
+  };
+  a.addEventListener('mouseenter', arm, { once: true });
+  a.addEventListener('focus', arm, { once: true });
+  a.addEventListener('touchstart', arm, { once: true, passive: true });
+  t.textContent = addr;
+})();
+</script>
+
+<!-- Every text app.js writes into the page. Each language version of the page
+     carries its own copy of this block and shares app.js. -->
+<script type="application/json" id="uiStrings">
+{
+  "modeToggle": { "light": "Világos / Sötét", "dark": "Sötét / Világos" },
+  "heroNodes": {
+    "cs":   { "label": "Mérnökinformatika", "detail": "BSc, BME, 4,73 / 5,00" },
+    "math": { "label": "Matematika",        "detail": "Morgan Stanley-különdíj" },
+    "econ": { "label": "Közgazdaságtan",    "detail": "Nemzetközi gazdaság és gazdálkodás MSc" },
+    "pol":  { "label": "Politológia",       "detail": "BA, Corvinus" },
+    "dip":  { "label": "Diplomácia",        "detail": "SUSI / Alpbach / Ifjúsági Tanács" },
+    "biz":  { "label": "Vállalkozás",       "detail": "CDL Berlin / Danube Cup" }
+  }
+}
+</script>
+<script src="/world-path.js?v=20261116" defer></script>
+<script src="/app.js?v=20261116" defer></script>
+
+</body>
+</html>
