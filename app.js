@@ -1,4 +1,4 @@
-/* Marcell Kovács, site.js
+/* Marcell Kovács, app.js
    Behaviour only: all content (ticker, stats, publications, experience,
    schools, speaking, awards, civic, now, marquee) is static in index.html.
    Here: map + pins, hover sync, scroll reveal and count-up, side rail,
@@ -63,7 +63,6 @@
         if(en.target.querySelectorAll){
           en.target.querySelectorAll('[data-count]').forEach(el=>{
             const target = +el.dataset.count;
-            let cur = 0;
             const dur = 1200;
             const start = performance.now();
             function tick(t){
@@ -150,36 +149,44 @@
 
   /* ============ mode toggle ============ */
   const mt = document.getElementById('modeToggle');
+  // accent colour for the hero canvas: read once by the next drawn frame,
+  // and read again after every mode change (empty string = read pending)
+  let accentColor = '';
   function setMode(m){
     document.documentElement.dataset.mode = m;
-    window.__TWEAKS__.mode = m;
     mt.textContent = m==='dark' ? 'Dark / Light' : 'Light / Dark';
-    // notify React tweaks panel so its internal state stays in sync
-    window.dispatchEvent(new CustomEvent('mk:setmode', {detail:{mode:m}}));
+    accentColor = '';
   }
-  window.__mkSetMode = setMode;
   mt.addEventListener('click', ()=>{
     const cur = document.documentElement.dataset.mode || 'light';
     setMode(cur==='light' ? 'dark' : 'light');
-    if(window.parent !== window){
-      window.parent.postMessage({type:'__edit_mode_set_keys', edits:{mode: document.documentElement.dataset.mode}}, '*');
-    }
   });
-  if(window.__TWEAKS__.mode==='dark') setMode('dark');
 
   /* ============ cursor ============ */
+  // The dot and ring are hidden by CSS on devices that cannot hover, so the
+  // follow loop only runs while the primary input can hover (re-checked on change).
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
+  const noHover = matchMedia('(hover: none)');
+  let cursorRunning = false;
   let mx=window.innerWidth/2, my=window.innerHeight/2, rx=mx, ry=my;
   window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
   function loop(){
+    if(noHover.matches){ cursorRunning = false; return; }
     rx += (mx-rx)*0.18;
     ry += (my-ry)*0.18;
     dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
     ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
     requestAnimationFrame(loop);
   }
-  requestAnimationFrame(loop);
+  function startCursor(){
+    if(cursorRunning || noHover.matches) return;
+    cursorRunning = true;
+    requestAnimationFrame(loop);
+  }
+  if(noHover.addEventListener) noHover.addEventListener('change', startCursor);
+  else if(noHover.addListener) noHover.addListener(startCursor);
+  startCursor();
   document.querySelectorAll('a, button, .pin, .school, .card, .pub').forEach(el=>{
     el.addEventListener('mouseenter', ()=>ring.classList.add('hover'));
     el.addEventListener('mouseleave', ()=>ring.classList.remove('hover'));
@@ -199,7 +206,6 @@
   /* ============ split hero name into letters ============ */
   const heroName = document.getElementById('heroName');
   if(heroName){
-    const html = heroName.innerHTML;
     // walk: split text nodes into spans, preserve <span class="ital">
     function splitNode(node){
       const out = document.createElement('span');
@@ -239,8 +245,13 @@
       flushWord();
       return out;
     }
+    // The plain name stays the heading's accessible name; the animated
+    // letters are decoration, so screen readers do not spell them out.
+    const nameText = heroName.textContent.replace(/\s+/g, ' ').trim();
     const splitted = splitNode(heroName);
+    splitted.setAttribute('aria-hidden', 'true');
     heroName.innerHTML = '';
+    heroName.setAttribute('aria-label', nameText);
     heroName.appendChild(splitted);
 
     const chars = heroName.querySelectorAll('.ch');
@@ -340,8 +351,18 @@
   });
   hero.addEventListener('mouseleave', ()=>{ hmx=-9999; hmy=-9999; });
 
+  // The loop runs only while the hero is on screen and the tab is visible.
+  // t advances per drawn frame, so a paused loop resumes exactly where it stopped.
   let t=0;
+  let drawId = 0;          // pending frame id, 0 while the loop is stopped
+  let heroInView = true;   // updated by the observer below
+  function canDraw(){ return heroInView && !document.hidden; }
+  function startDraw(){
+    if(!drawId && canDraw()) drawId = requestAnimationFrame(draw);
+  }
   function draw(){
+    drawId = 0;
+    if(!canDraw()) return;
     t += 0.008;
     ctx.clearRect(0, 0, W, H);
 
@@ -373,6 +394,7 @@
     });
 
     // edges: connect every pair, opacity by distance, with traveling pulses
+    if(!accentColor) accentColor = getCSS('--accent') || '#1f4ed8';
     for(let i=0;i<nodes.length;i++){
       for(let j=i+1;j<nodes.length;j++){
         const a=nodes[i], b=nodes[j];
@@ -386,9 +408,8 @@
         const phase = ((t*0.5 + (i*0.13 + j*0.07)) % 1);
         const px = a.x + dx*phase;
         const py = a.y + dy*phase;
-        const accent = getCSS('--accent') || '#1f4ed8';
-        ctx.fillStyle = accent;
-        ctx.shadowColor = accent;
+        ctx.fillStyle = accentColor;
+        ctx.shadowColor = accentColor;
         ctx.shadowBlur = 10;
         ctx.beginPath(); ctx.arc(px, py, 1.4, 0, Math.PI*2); ctx.fill();
         ctx.shadowBlur = 0;
@@ -424,11 +445,17 @@
       lab.style.top  = (n.y + oy) + 'px';
     });
 
-    requestAnimationFrame(draw);
+    drawId = requestAnimationFrame(draw);
   }
   function getCSS(v){
     return getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   }
-  requestAnimationFrame(draw);
+  // 200px margin: drawing resumes just before the hero scrolls back into view
+  new IntersectionObserver(entries => {
+    heroInView = entries[entries.length - 1].isIntersecting;
+    startDraw();
+  }, {rootMargin: '200px 0px'}).observe(hero);
+  document.addEventListener('visibilitychange', startDraw);
+  startDraw();
 
 })();

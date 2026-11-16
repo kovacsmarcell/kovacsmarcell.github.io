@@ -6,6 +6,7 @@
 <title>Marcell Kovács, Computer engineer, political scientist, researcher.</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 <meta name="theme-color" content="#0b1230" />
 <link rel="canonical" href="https://marcellkovacs.me/" />
@@ -104,7 +105,7 @@
 
 <style>
 :root{
-  --accent: #1f4ed8;          /* CV blue */
+  --accent: #0ea5e9;          /* sky blue accent */
   --accent-deep: #0b2a78;
   --accent-soft: #dbe5ff;
   --paper: #f5f1e8;           /* warm off-white */
@@ -521,7 +522,7 @@ footer .toTop:hover .arr{transform:translateY(-2px)}ace-between;flex-wrap:wrap;g
 
 /* split letters in hero name */
 .hero h1 .ch{display:inline-block;will-change:transform;transition:transform .5s cubic-bezier(.2, .7, .3, 1), color .5s}
-.hero h1 .ch.sp{width:.25em}
+.hero h1 .ch.sp{width:.25em;white-space:pre}
 .hero h1 .word{display:inline-block;white-space:nowrap}
 
 /* ============ PAGE LOAD INTRO ============ */
@@ -622,17 +623,7 @@ a.linkcard{display:block}
 @keyframes tk2{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 </style>
-
-<script>
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accent": "#0ea5e9",
-  "mode": "light",
-  "heroVariant": "network",
-  "showCursor": true,
-  "showTicker": true
-}/*EDITMODE-END*/;
-window.__TWEAKS__ = TWEAK_DEFAULTS;
-</script>
+<noscript><style>.intro-curtain,.cursor-dot,.cursor-ring,.railToggle{display:none}.reveal{opacity:1;transform:none}body:not(.intro-done) .hero *{opacity:1!important;animation:none!important}</style></noscript>
 
 </head>
 <body>
@@ -648,10 +639,6 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
   const c = document.getElementById('introCurtain');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduced){ document.body.classList.add('intro-done'); c.remove(); return; }
-  // stamp letter index for cascade
-  requestAnimationFrame(()=>{
-    document.querySelectorAll('.hero h1 .ch').forEach((el,i)=>el.style.setProperty('--ci', i));
-  });
   setTimeout(()=>{ c.classList.add('lift'); document.body.classList.add('intro-done'); }, 850);
   setTimeout(()=>{ c.remove(); }, 1600);
 })();
@@ -789,7 +776,11 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
         <div class="frame">
           <span class="corner tl"></span><span class="corner tr"></span>
           <span class="corner bl"></span><span class="corner br"></span>
-          <img src="marcell.jpg" alt="Marcell Kovács" loading="lazy" />
+          <!-- Full-resolution source on purpose: the browser scales it down exactly as before, so the portrait stays as sharp on high-density screens. WebP keeps it far lighter than the JPEG fallback. -->
+          <picture>
+            <source type="image/webp" srcset="marcell-kovacs-2048.webp" />
+            <img src="marcell.jpg" width="2048" height="2047" alt="Marcell Kovács" loading="lazy" />
+          </picture>
         </div>
         <div class="cap">
           <span><b>Marcell Kovács</b> / Budapest</span>
@@ -1211,7 +1202,7 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
       </a>
     </div>
     <div class="signoff">
-      <div class="avatar" aria-hidden="true"><img src="marcell.jpg" alt="" /></div>
+      <div class="avatar" aria-hidden="true"><picture><source type="image/webp" srcset="marcell-kovacs-256.webp" /><img src="marcell-kovacs-256.jpg" width="256" height="256" alt="" loading="lazy" decoding="async" /></picture></div>
       <div class="lang">
         Languages<br>
         Hungarian, Native<br>
@@ -1254,15 +1245,8 @@ window.__TWEAKS__ = TWEAK_DEFAULTS;
 })();
 </script>
 
-<!-- Tweaks panel host scripts -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-<script src="world-path.js"></script>
-<script src="app.js"></script>
-<script type="text/babel" src="tweaks-panel.jsx"></script>
-<script type="text/babel" src="app-tweaks.jsx"></script>
+<script src="world-path.js" defer></script>
+<script src="app.js" defer></script>
 
 </body>
 </html>
