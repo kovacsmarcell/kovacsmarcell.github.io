@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Marcell Kovács, Computer engineer, political scientist, researcher.</title>
+<title>Marcell Kovács | Technology policy researcher, Budapest</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png" />
@@ -11,14 +11,14 @@
 <meta name="theme-color" content="#0b1230" />
 <link rel="canonical" href="https://marcellkovacs.me/" />
 
-<meta name="description" content="Computer engineer. Political scientist. Researcher of techno-nationalism, semiconductors, and the digital economy." />
+<meta name="description" content="Marcell Kovács (Kovács Marcell) is a computer engineer, economist and political scientist in Budapest, researching semiconductor policy and how technology firms grow." />
 
 <!-- Open Graph -->
 <meta property="og:type" content="profile" />
 <meta property="og:url" content="https://marcellkovacs.me/" />
 <meta property="og:site_name" content="Marcell Kovács" />
-<meta property="og:title" content="Marcell Kovács, Computer engineer, political scientist, researcher" />
-<meta property="og:description" content="Computer engineer. Political scientist. Researcher of techno-nationalism, semiconductors, and the digital economy." />
+<meta property="og:title" content="Marcell Kovács | Technology policy researcher, Budapest" />
+<meta property="og:description" content="Marcell Kovács (Kovács Marcell) is a computer engineer, economist and political scientist in Budapest, researching semiconductor policy and how technology firms grow." />
 <meta property="og:image" content="https://marcellkovacs.me/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -29,8 +29,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Marcell Kovács, Computer engineer, political scientist, researcher" />
-<meta name="twitter:description" content="Computer engineer. Political scientist. Researcher of techno-nationalism, semiconductors, and the digital economy." />
+<meta name="twitter:title" content="Marcell Kovács | Technology policy researcher, Budapest" />
+<meta name="twitter:description" content="Marcell Kovács (Kovács Marcell) is a computer engineer, economist and political scientist in Budapest, researching semiconductor policy and how technology firms grow." />
 <meta name="twitter:image" content="https://marcellkovacs.me/og-image.jpg" />
 <meta name="twitter:image:alt" content="Portrait of Marcell Kovács" />
 
@@ -54,6 +54,7 @@
       "url": "https://marcellkovacs.me/",
       "name": "Marcell Kovács",
       "inLanguage": "en",
+      "dateModified": "2026-11-16",
       "isPartOf": { "@id": "https://marcellkovacs.me/#website" },
       "mainEntity": { "@id": "https://marcellkovacs.me/#person" }
     },
@@ -69,14 +70,18 @@
         "https://marcellkovacs.me/marcell.jpg",
         "https://marcellkovacs.me/og-image.jpg"
       ],
-      "description": "Computer engineer and political scientist in Budapest. Researcher of techno-nationalism, semiconductors, and the digital economy.",
+      "description": "Marcell Kovács (Kovács Marcell) is a computer engineer, economist and political scientist in Budapest, researching semiconductor policy and how technology firms grow.",
+      "jobTitle": "Junior Researcher",
+      "worksFor": { "@type": "Organization", "name": "Center for Next Technological Futures, National Talent Centre (NTK)" },
       "homeLocation": { "@type": "City", "name": "Budapest", "addressCountry": "HU" },
       "knowsLanguage": ["hu", "en"],
       "knowsAbout": [
+        "Technology policy",
         "Semiconductor industrial policy",
         "Techno-nationalism",
-        "Digital economy",
-        "Electric vehicle supply chains"
+        "Startup and scaleup growth",
+        "AI export controls",
+        "Digital economy"
       ],
       "alumniOf": [
         {
@@ -92,7 +97,8 @@
       ],
       "sameAs": [
         "https://www.linkedin.com/in/marcellkov",
-        "https://github.com/kovacsmarcell"
+        "https://github.com/kovacsmarcell",
+        "https://itif.org/person/marcell-kovacs/"
       ]
     }
   ]
@@ -267,7 +273,7 @@ body.scrolled .topbar{background:color-mix(in oklab, var(--paper) 86%, transpare
 
 /* ================ ticker ================ */
 .ticker{background:var(--ink);color:var(--paper);overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);position:relative}
-.ticker .row{display:flex;gap:64px;padding:18px 0;animation:tk 60s linear infinite;white-space:nowrap;width:max-content}
+.ticker .row{display:flex;gap:64px;padding:18px 0;animation:tk 87s linear infinite;white-space:nowrap;width:max-content}
 .ticker:hover .row{animation-play-state:paused}
 .ticker span{font:500 12px/1 'JetBrains Mono', monospace;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:18px}
 .ticker span::after{content:"◆";color:var(--accent);font-size:8px}
@@ -327,6 +333,13 @@ section{position:relative;padding:120px 28px;border-top:1px solid var(--rule)}
 #research .pub .meta{font:500 11px/1.6 'JetBrains Mono', monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
 #research .pub .meta b{display:block;color:var(--ink-2);font-weight:500;margin-bottom:6px}
 @media (max-width:880px){#research .pub{grid-template-columns:60px 1fr;gap:20px}#research .pub .meta{grid-column:2}}
+/* policy and market analyses: a sub-list in the same row style, titles in the title column */
+#research .analyses{margin-top:clamp(64px, 8vw, 96px)}
+#research .analyses .eyebrow-row{margin-bottom:0}
+#research .analyses h3{font:inherit}
+#research .analyses .pubs{border-top:none}
+#research .analyses .ttl{grid-column:2 / -1}
+@media (max-width:880px){#research .analyses .ttl{grid-column:1 / -1}}
 
 /* ================ EXPERIENCE ================ */
 #experience .wrap2{display:grid;grid-template-columns:240px 1fr;gap:80px}
@@ -417,6 +430,9 @@ section{position:relative;padding:120px 28px;border-top:1px solid var(--rule)}
 #contact .channels a:hover{padding-left:18px;background:var(--paper-2)}
 #contact .channels .k{font:500 10px/1 'JetBrains Mono', monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
 #contact .channels .v{font-family:'Instrument Serif', serif;font-size:clamp(20px, 1.8vw, 26px);line-height:1.2;color:var(--ink);word-break:break-all}
+#contact .elsewhere{margin-top:20px;padding:0 4px;font:500 11px/1.6 'JetBrains Mono', monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+#contact .elsewhere .k{margin-right:14px}
+#contact .elsewhere a{color:var(--ink-2)}
 #contact .signoff{margin-top:80px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
 #contact .signoff .avatar{width:64px;height:64px;border-radius:99px;overflow:hidden;border:1px solid var(--rule);flex-shrink:0;box-shadow:0 6px 24px rgba(0,0,0,.12)}
 #contact .signoff .avatar img{width:100%;height:100%;object-fit:cover;display:block}
@@ -519,6 +535,10 @@ footer .toTop:hover .arr{transform:translateY(-2px)}ace-between;flex-wrap:wrap;g
 .uline{position:relative;display:inline-block}
 .uline::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:100%;background:currentColor;transform-origin:right;transform:scaleX(0);transition:transform .4s ease}
 .uline:hover::after{transform-origin:left;transform:scaleX(1)}
+
+/* linked titles: look like the plain titles, with a quiet accent underline on hover or keyboard focus */
+.tlink{text-decoration-line:underline;text-decoration-thickness:1px;text-decoration-color:transparent;text-underline-offset:.16em;transition:text-decoration-color .3s ease}
+.tlink:hover, .tlink:focus-visible{text-decoration-color:var(--accent)}
 
 /* split letters in hero name */
 .hero h1 .ch{display:inline-block;will-change:transform;transition:transform .5s cubic-bezier(.2, .7, .3, 1), color .5s}
@@ -629,7 +649,7 @@ a.linkcard{display:block}
 <body>
 
 <div class="intro-curtain" id="introCurtain" aria-hidden="true">
-  <div class="ic-meta"><span>MARCELL KOVÁCS</span><span>EST. 1999</span><span>BUDAPEST</span></div>
+  <div class="ic-meta"><span>MARCELL KOVÁCS</span><span>PERSONAL INDEX</span><span>BUDAPEST</span></div>
   <div class="ic-mark">interdisciplinary<span class="dot"></span></div>
   <div class="ic-line"></div>
 </div>
@@ -681,7 +701,7 @@ a.linkcard{display:block}
 
   <div class="meta-tl">
     Personal Index<br>
-    Updated / May 2026
+    Updated / November 2026
   </div>
   <div class="meta-tr">
     47.4979° N<br>
@@ -695,7 +715,7 @@ a.linkcard{display:block}
     </h1>
     <div class="nameHu"><span lang="hu">Kovács Marcell</span> / Hungarian</div>
     <p class="tag">
-      Computer scientist. Political scientist. Researcher of <em>techno-nationalism</em>, semiconductors, and the <em>digital economy</em>.
+      Computer engineer. Economist. Political scientist. Researcher of <em>technology policy</em> and how <em>technology firms grow</em>.
     </p>
   </div>
 
@@ -714,12 +734,19 @@ a.linkcard{display:block}
 <!-- =================== TICKER =================== -->
 <div class="ticker" id="ticker">
   <div class="row" id="tickerRow">
-    <span>EBES Paris 2026</span>
+    <span>ITIF / Innovation Index 3.0</span>
+    <span lang="hu">Közgazdasági Szemle 2026</span>
+    <span>Center for Next Technological Futures</span>
+    <span>Gránit / Grandio Blog</span>
+    <span>European Forum Alpbach</span>
+    <span>GTIPA Summit, Warsaw</span>
+    <span>GLOBAFA Budapest &amp; Madrid</span>
+    <span>ISEG Lisbon</span>
+    <span>Publication Excellence Award 2026</span>
     <span>TSMC / Techno-Nationalism</span>
     <span>CHIPS &amp; Science Act</span>
     <span>V4 × East Asian EVs</span>
-    <span>GLOBAFA Budapest</span>
-    <span>Lecturer / BME Statistics</span>
+    <span>EBES Paris 2026</span>
     <span>Creative Destruction Lab Berlin</span>
     <span>Unity in Connectivity Foundation</span>
     <span>U.S. Embassy Youth Council</span>
@@ -731,12 +758,19 @@ a.linkcard{display:block}
     <span>Arizona State, Phoenix</span>
     <span>Istanbul Aydın University</span>
     <div class="loopcopy" aria-hidden="true">
-      <span>EBES Paris 2026</span>
+      <span>ITIF / Innovation Index 3.0</span>
+      <span lang="hu">Közgazdasági Szemle 2026</span>
+      <span>Center for Next Technological Futures</span>
+      <span>Gránit / Grandio Blog</span>
+      <span>European Forum Alpbach</span>
+      <span>GTIPA Summit, Warsaw</span>
+      <span>GLOBAFA Budapest &amp; Madrid</span>
+      <span>ISEG Lisbon</span>
+      <span>Publication Excellence Award 2026</span>
       <span>TSMC / Techno-Nationalism</span>
       <span>CHIPS &amp; Science Act</span>
       <span>V4 × East Asian EVs</span>
-      <span>GLOBAFA Budapest</span>
-      <span>Lecturer / BME Statistics</span>
+      <span>EBES Paris 2026</span>
       <span>Creative Destruction Lab Berlin</span>
       <span>Unity in Connectivity Foundation</span>
       <span>U.S. Embassy Youth Council</span>
@@ -751,25 +785,25 @@ a.linkcard{display:block}
   </div>
 </div>
 
-<div class="numdivider"><div class="big">01</div><div class="lbl">About<em>Four disciplines, one researcher</em></div></div>
+<div class="numdivider"><div class="big">01</div><div class="lbl">About<em>Six disciplines, one researcher</em></div></div>
 
 <!-- =================== ABOUT =================== -->
 <section id="about" data-screen-label="01 About">
   <div class="wrap">
     <div class="eyebrow-row">
       <span><span class="num">01</span> &nbsp;/&nbsp; <span class="name">About</span></span>
-      <span>Four disciplines, one researcher</span>
+      <span>Six disciplines, one researcher</span>
     </div>
     <div class="grid">
       <div class="lede reveal">
         <p>I am a computer engineer who became a political scientist who became an economist, not by switching tracks, but by refusing to pick one.</p>
-        <p>My work sits where code, capital, and policy collide: semiconductor industrial policy, techno-nationalism, electric-vehicle supply chains, and the financial markets that price all of it.</p>
-        <p>I research, teach, build, and represent. The questions I care about don't sit inside one discipline, so I don't either.</p>
+        <p>My work sits where code, capital, and policy collide: how technology firms grow from startup to scaleup to unicorn, what states do to help or hinder them, and how markets price it all. Most of it is about semiconductors and AI.</p>
+        <p>I research, write, build, and represent. I publish with ITIF in Washington and in <span lang="hu">Közgazdasági Szemle</span>, and I work on the same questions in practice, from enterprise software to mentoring a deep-tech startup and leading a foundation.</p>
         <div class="stats reveal" id="aboutStats">
-          <div><div class="n" data-count="3">3</div><div class="lab">engineering &amp; policy degrees</div></div>
-          <div><div class="n" data-count="6">6</div><div class="lab">universities studied at</div></div>
-          <div><div class="n" data-count="4">4</div><div class="lab">EBES / GLOBAFA presentations</div></div>
-          <div><div class="n" data-count="14">14</div><div class="lab">countries of work &amp; study</div></div>
+          <div><div class="n" data-count="4">4</div><div class="lab">degree programmes in four fields</div></div>
+          <div><div class="n" data-count="8">8</div><div class="lab">universities studied at</div></div>
+          <div><div class="n" data-count="5">5</div><div class="lab">EBES / GLOBAFA presentations</div></div>
+          <div><div class="n" data-count="15">15</div><div class="lab">countries of work &amp; study</div></div>
         </div>
       </div>
       <div class="portrait reveal">
@@ -786,7 +820,7 @@ a.linkcard{display:block}
           <span><b>Marcell Kovács</b> / Budapest</span>
           <span>Photo / 2026</span>
         </div>
-        <p class="scribble">Most days you'll find me between a paper, a lecture hall, and a coffee in the 7th district. I'm happiest when a problem refuses to stay inside one field.</p>
+        <p class="scribble">Most days you'll find me between a paper, a lecture hall, and a coffee in the 7th district. At home the family name comes first: <span lang="hu">Kovács Marcell</span>. I'm happiest when a problem refuses to stay inside one field.</p>
       </div>
     </div>
   </div>
@@ -798,54 +832,78 @@ a.linkcard{display:block}
   <div class="wrap">
     <div class="eyebrow-row">
       <span><span class="num">02</span> &nbsp;/&nbsp; <span class="name">Research &amp; Publications</span></span>
-      <span>Peer-reviewed / 2023 → 2026</span>
+      <span>Selected publications / 2023 → 2026</span>
     </div>
-    <h2 class="h-display reveal">Papers on semiconductor <span class="ital">industrial policy</span> and its market effects.</h2>
+    <h2 class="h-display reveal">Papers on semiconductor <span class="ital">industrial policy</span>, the technology war, and how tech firms scale.</h2>
     <div class="pubs" id="pubs" style="margin-top:64px">
       <div class="pub">
         <div class="yr">2026</div>
-        <h3 class="ttl">Firm-Level Valuation in the New Wave of Techno-Nationalism: The Cases of TSMC Phoenix, Intel Magdeburg, and Rapidus Japan Investments</h3>
-        <div class="meta"><b>55th EBES Conference, Budapest</b>Sole author<br>ISBN 978-625-95653-6-1</div>
+        <h3 class="ttl"><a class="tlink" href="https://itif.org/publications/2026/09/08/transatlantic-subnational-innovation-competitiveness-index-3-0/" target="_blank" rel="noopener">Transatlantic Subnational Innovation Competitiveness Index 3.0</a></h3>
+        <div class="meta"><b>ITIF, Washington D.C.</b>Report / Co-author / 213 regions, 13 countries</div>
       </div>
       <div class="pub">
         <div class="yr">2026</div>
-        <h3 class="ttl">New Wave of Techno-Nationalism? Case of TSMC's U.S. Investment Phases</h3>
-        <div class="meta"><b>54th EBES Conference, Paris</b>Sole author<br>ISBN 978-625-95653-5-4</div>
+        <h3 class="ttl"><a class="tlink" href="https://doi.org/10.18414/KSZ.2026.6.654" target="_blank" rel="noopener">Winners and Losers of the Technology War (<span lang="hu">A technológiai háború nyertesei és vesztesei</span>)</a></h3>
+        <div class="meta"><b><span lang="hu">Közgazdasági Szemle</span> 73(6), 654-680</b>Journal article, peer-reviewed / with Ágnes Szunomár / in Hungarian<br>DOI 10.18414/KSZ.2026.6.654</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2026</div>
+        <h3 class="ttl">Semiconductor Industrial Policy and Asymmetric Market Expectations: Evidence from the US CHIPS and Science Act and Implications for Central and Eastern Europe</h3>
+        <div class="meta"><b>Society and Economy</b>Journal article, accepted / with Ágnes Szunomár</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2026</div>
+        <h3 class="ttl">Firm-Level Valuation in the New Wave of Techno-Nationalism: The Cases of TSMC Phoenix, Intel Magdeburg, and Rapidus Japan Investments</h3>
+        <div class="meta"><b>55th EBES Conference, Budapest</b>Conference abstract / Sole author<br>ISBN 978-625-95653-6-1</div>
+      </div>
+      <div class="pub">
+        <div class="yr">2026</div>
+        <h3 class="ttl">New Wave of Techno-Nationalism? The Case of TSMC's U.S. Investment Phases</h3>
+        <div class="meta"><b>54th EBES Conference, Paris</b>Conference abstract / Sole author<br>ISBN 978-625-95653-5-4</div>
       </div>
       <div class="pub">
         <div class="yr">2025</div>
         <h3 class="ttl">Global Financial Market Reactions to U.S. Semiconductor Industrial Policy</h3>
-        <div class="meta"><b>GLOBAFA Conference, Budapest</b>Sole author<br>ISBN 978-625-95653-2-3</div>
+        <div class="meta"><b>1st GLOBAFA Conference, Budapest</b>Conference abstract / Sole author<br>ISBN 978-625-95653-2-3</div>
       </div>
       <div class="pub">
         <div class="yr">2025</div>
-        <h3 class="ttl">The Economic Impact of Industrial Policy on the Global Semiconductor Supply Chain: An Event Study of the CHIPS and Science Act</h3>
-        <div class="meta"><b>51st EBES Conference, Rome</b>Sole author<br>ISBN 978-625-95653-1-6</div>
+        <h3 class="ttl">The Economic Impact of Industrial Policy on the Global Semiconductor Supply Chain: An Event Study of the CHIPS and Science Act Passing Through the U.S. House of Representatives</h3>
+        <div class="meta"><b>51st EBES Conference, Rome</b>Conference abstract / Sole author<br>ISBN 978-625-95653-1-6</div>
       </div>
       <div class="pub">
         <div class="yr">2025</div>
-        <h3 class="ttl">Central Europe–East Asia EV Nexus: Tracking Chinese, South Korean and Japanese EV and battery investment in the V4</h3>
-        <div class="meta"><b>CEIAS Report</b>Co-author with Martin Šebeňa et al.<br>ISBN 978-80-8239-029-5</div>
+        <h3 class="ttl"><a class="tlink" href="https://ceias.eu/central-europe-east-asia-ev-nexus/" target="_blank" rel="noopener">Central Europe–East Asia EV Nexus: Tracking Chinese, South Korean and Japanese EV and battery investment in the V4</a></h3>
+        <div class="meta"><b>CEIAS</b>Report / Co-author with Martin Šebeňa, Ágnes Szunomár et al.<br>ISBN 978-80-8239-029-5</div>
       </div>
       <div class="pub">
         <div class="yr">2024</div>
-        <h3 class="ttl">Media Literacy Exchange: Insights from Oxford</h3>
-        <div class="meta"><b>LitGloMedia Blog</b>with Luca Hullán<br></div>
+        <h3 class="ttl"><a class="tlink" href="https://litglomedia.com/" target="_blank" rel="noopener">Media Literacy Exchange: Insights from Oxford</a></h3>
+        <div class="meta"><b>LitGloMedia Blog</b>Essay / with Luca Hullán</div>
       </div>
       <div class="pub">
         <div class="yr">2023</div>
         <h3 class="ttl">Technology &amp; Challenges of Democracy</h3>
-        <div class="meta"><b>ASU Study of US Institutes Blog</b>with Eni Shtjefni<br></div>
-      </div>
-      <div class="pub">
-        <div class="yr">2022</div>
-        <h3 class="ttl">Analyzing the Effects of News on Stock Prices Using Statistical Methods</h3>
-        <div class="meta"><b>BME BSc Thesis</b>Sole author<br></div>
+        <div class="meta"><b>ASU Study of U.S. Institutes Blog</b>Essay / with Eni Shtjefni</div>
       </div>
       <div class="pub">
         <div class="yr">WIP</div>
-        <h3 class="ttl">Impact of U.S. Semiconductor Policy Amid the U.S.–China Technology War on Economic Actors</h3>
-        <div class="meta"><b>Working Paper</b>Sole author<br></div>
+        <h3 class="ttl">Where the Chips Fall: What Turns a European Scaleup into a Unicorn?</h3>
+        <div class="meta"><b>Working paper</b>762 semiconductor scaleups in a database of 31,600 European technology firms</div>
+      </div>
+    </div>
+    <div class="analyses" id="analyses">
+      <div class="eyebrow-row">
+        <h3 class="name">Policy and market analyses</h3>
+        <span>Grandio Blog, Gránit Asset Management / 2026</span>
+      </div>
+      <div class="pubs">
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/en/grandioblog/taiwan-silicon-shield-tsmc-chip-manufacturing/" target="_blank" rel="noopener">The Island the World Economy Depends On: How Long Will the Silicon Shield Protect Taiwan?</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/en/grandioblog/chips-act-fabless-chipmakers-winners/" target="_blank" rel="noopener">The CHIPS Act Paradox: How Fabless Chipmakers Became Winners of the Tech War</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/en/grandioblog/ai-export-controls-switch-off-risk-digital-dependency/" target="_blank" rel="noopener">The Price of Dependency: When Washington Switches Off a Frontier AI Model</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/en/grandioblog/european-defense-scaleups-rearm-europe/" target="_blank" rel="noopener">European defense scaleups: who really benefits from ReArm Europe's €800 billion?</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/en/grandioblog/economic-paradox-modern-warfare-cheap-drones-expensive-interceptors/" target="_blank" rel="noopener">Cheap Drones, Costly Defense: The Economic Trap of Modern Warfare</a></h4></div>
+        <div class="pub"><h4 class="ttl"><a class="tlink" href="https://granitalapkezelo.hu/en/grandioblog/why-elon-musk-build-data-centers-in-space/" target="_blank" rel="noopener">Why Would Elon Musk Build Data Centers in Space? The AI Era and Energy as the Real Bottleneck</a></h4></div>
       </div>
     </div>
   </div>
@@ -856,40 +914,58 @@ a.linkcard{display:block}
   <div class="wrap">
     <div class="eyebrow-row">
       <span><span class="num">03</span> &nbsp;/&nbsp; <span class="name">Experience</span></span>
-      <span>Apprenticeship → Foundation</span>
+      <span>Apprenticeship → Research</span>
     </div>
     <div class="wrap2">
-      <p class="legend">A line that runs from a 2015 software apprenticeship in a tractor company to founding a foundation, lecturing statistics, and presenting in Paris in 2026.</p>
+      <p class="legend">A line that runs from a 2015 software apprenticeship at an agricultural machinery maker to research on how tech firms scale, a paper in <span lang="hu">Közgazdasági Szemle</span>, and a co-authored ITIF index in 2026.</p>
       <ol id="expList">
         <li>
           <div class="per">2025 → now</div>
-          <div class="role">President &amp; Legal Representative</div>
-          <div class="org">Unity in Connectivity Foundation</div>
-          <div class="nt">Egység a Kapcsolódásban Alapítvány</div>
+          <div class="role">Junior Researcher</div>
+          <div class="org">Center for Next Technological Futures (National Talent Centre, NTK)</div>
+          <div class="nt">With Prof. Zoltán Cséfalvay: how startups become scaleups and unicorns; semiconductor industrial policy</div>
         </li>
         <li>
-          <div class="per">Autumn 2025</div>
-          <div class="role">Part-time Lecturer of Statistics</div>
-          <div class="org">Budapest University of Technology and Economics</div>
-          <div class="nt">Taught probability theory and statistics; not teaching this spring</div>
+          <div class="per">2026 → now</div>
+          <div class="role">Expert Author, Technology &amp; Geopolitics</div>
+          <div class="org">Gránit Asset Management</div>
+          <div class="nt">By-lined analyses on semiconductors, AI export controls, defense scaleups and markets (Grandio Blog)</div>
+        </li>
+        <li>
+          <div class="per">2024 → now</div>
+          <div class="role">EKÖP Grant Researcher</div>
+          <div class="org">Corvinus University of Budapest</div>
+          <div class="nt">National research grant: market effects of chip subsidies and export controls, event study</div>
+        </li>
+        <li>
+          <div class="per">2025 → now</div>
+          <div class="role">Co-founder &amp; President</div>
+          <div class="org">Unity in Connectivity Foundation</div>
+          <div class="nt"><span lang="hu">Egység a Kapcsolódásban Alapítvány</span> / hunicon.org</div>
         </li>
         <li>
           <div class="per">2025 → 26</div>
-          <div class="role">Student Participant</div>
+          <div class="role">Adjunct Instructor, Statistics</div>
+          <div class="org">Budapest University of Technology and Economics</div>
+          <div class="nt">Ran the probability and statistics practice seminars independently</div>
+        </li>
+        <li>
+          <div class="per">2025 → 26</div>
+          <div class="role">Student Mentor</div>
           <div class="org">Creative Destruction Lab Berlin</div>
-          <div class="nt">Deep-tech mentoring program</div>
+          <div class="nt">Deep-tech accelerator run by ESMT Berlin; worked with Axiom Therapeutics (AI drug discovery)</div>
         </li>
         <li>
           <div class="per">2024 → 25</div>
           <div class="role">Research Assistant</div>
           <div class="org">Corvinus, Institute of Global Studies</div>
-          <div class="nt">V4 Grant, East Asian EV makers in V4 transitions</div>
+          <div class="nt">Visegrad Fund project: East Asian EV makers in the V4 EV transition</div>
         </li>
         <li>
           <div class="per">2023 → now</div>
           <div class="role">Founder</div>
           <div class="org">LitGloMedia</div>
-          <div class="nt">Funded by Meridian International &amp; U.S. State Dept.</div>
+          <div class="nt">Funded by Meridian International Center &amp; U.S. State Dept. / litglomedia.com</div>
         </li>
         <li>
           <div class="per">2022 → 23</div>
@@ -899,9 +975,9 @@ a.linkcard{display:block}
         </li>
         <li>
           <div class="per">2021</div>
-          <div class="role">Intern, ERP &amp; Controlling</div>
+          <div class="role">Developer, ERP &amp; Controlling</div>
           <div class="org">Petasoft Kft.</div>
-          <div class="nt">Enterprise information systems</div>
+          <div class="nt">Coordinated a student team; data gathering and processing for an EY EasyBusiness ERP system</div>
         </li>
         <li>
           <div class="per">2019 → 21</div>
@@ -913,57 +989,67 @@ a.linkcard{display:block}
           <div class="per">2015</div>
           <div class="role">Software Developer Apprentice</div>
           <div class="org">CLAAS Hungária Kft.</div>
-          <div class="nt">Corporate data analysis / management systems</div>
+          <div class="nt">Delivered a management data system solo, from specification to handover, in R&amp;D engineering support</div>
         </li>
       </ol>
     </div>
   </div>
 </section>
 
-<div class="numdivider"><div class="big">04</div><div class="lbl">Education<em>Six schools, one line</em></div></div>
+<div class="numdivider"><div class="big">04</div><div class="lbl">Education<em>Eight schools, one line</em></div></div>
 <!-- =================== EDUCATION =================== -->
 <section id="education" data-screen-label="04 Education">
   <div class="wrap">
     <div class="eyebrow-row">
       <span><span class="num">04</span> &nbsp;/&nbsp; <span class="name">Education</span></span>
-      <span>Six universities / Four continents-adjacent</span>
+      <span>Eight universities / Europe &amp; North America</span>
     </div>
-    <h2 class="h-display reveal">Six universities, <span class="ital">four</span> fields.</h2>
+    <h2 class="h-display reveal">Eight universities, <span class="ital">four</span> degree fields.</h2>
     <div class="grid">
       <div class="map-wrap reveal" id="mapWrap">
         <svg class="mapsvg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" id="worldSvg"></svg>
         <div id="pins"></div>
       </div>
       <div class="schools reveal" id="schools">
-        <div class="school" data-i="0" data-city="Budapest" data-lat="47.5" data-lng="19.04">
+        <div class="school" data-i="0" data-city="Budapest" data-lat="47.50" data-lng="19.04">
           <div class="yr"><span>2022 → now</span><span class="city">Budapest</span></div>
           <h3>Corvinus University of Budapest</h3>
-          <p>MSc International Economy &amp; Business / BA Political Science</p>
+          <p>MSc International Economy &amp; Business (2025 → now; most of the two-year programme completed in year one, top grade average) / BA Political Science (2022 → 25)</p>
         </div>
         <div class="school" data-i="1" data-city="Budapest" data-lat="47.48" data-lng="19.06">
           <div class="yr"><span>2018 → 22</span><span class="city">Budapest</span></div>
           <h3>Budapest University of Technology and Economics</h3>
-          <p>BSc Computer Science Engineering / 4.73 / Talent program</p>
+          <p>BSc Computer Science Engineering / enterprise information systems / 4.73 / Talent Program / guest student at Corvinus in Economic and Financial Mathematical Analysis / thesis: Analyzing the Effects of News on Stock Prices Using Statistical Methods</p>
         </div>
-        <div class="school" data-i="2" data-city="Kraków" data-lat="50.06" data-lng="19.94">
+        <div class="school" data-i="2" data-city="Debrecen" data-lat="47.53" data-lng="21.63">
+          <div class="yr"><span>2026 → now</span><span class="city">Debrecen</span></div>
+          <h3>University of Debrecen</h3>
+          <p>Postgraduate Diploma in Mental Health / helping conversation and counseling skills</p>
+        </div>
+        <div class="school" data-i="3" data-city="Kraków" data-lat="50.06" data-lng="19.94">
           <div class="yr"><span>Winter 2023</span><span class="city">Kraków</span></div>
           <h3>Jagiellonian University</h3>
           <p>International Relations &amp; Complexity Theory</p>
         </div>
-        <div class="school" data-i="3" data-city="Phoenix" data-lat="33.45" data-lng="-112.07">
+        <div class="school" data-i="4" data-city="Phoenix" data-lat="33.45" data-lng="-112.07">
           <div class="yr"><span>Summer 2023</span><span class="city">Phoenix</span></div>
           <h3>Arizona State University</h3>
-          <p>Journalism and Media / Study of U.S. Institutes</p>
+          <p>Journalism and Media / U.S. State Dept. SUSI scholar</p>
         </div>
-        <div class="school" data-i="4" data-city="Barcelona" data-lat="41.39" data-lng="2.16">
+        <div class="school" data-i="5" data-city="Barcelona" data-lat="41.39" data-lng="2.16">
           <div class="yr"><span>2024 &amp; 2025</span><span class="city">Barcelona</span></div>
           <h3>Barcelona School of Economics</h3>
-          <p>Digital Economics / Complex Network Analysis</p>
+          <p>Digital Economics (2024) / Development Economics incl. Complex Network Analysis (2025)</p>
         </div>
-        <div class="school" data-i="5" data-city="Istanbul" data-lat="41.01" data-lng="28.97">
+        <div class="school" data-i="6" data-city="Istanbul" data-lat="41.01" data-lng="28.97">
           <div class="yr"><span>2025 &amp; 2026</span><span class="city">Istanbul</span></div>
           <h3>Istanbul Aydın University</h3>
           <p>Digital Marketing / Genetics &amp; Medical Biotech</p>
+        </div>
+        <div class="school" data-i="7" data-city="Lisbon" data-lat="38.72" data-lng="-9.14">
+          <div class="yr"><span>2026</span><span class="city">Lisbon</span></div>
+          <h3>ISEG Lisbon School of Economics and Management</h3>
+          <p>Economic Analysis of Text and Non-Standard Data / Economic History</p>
         </div>
       </div>
     </div>
@@ -975,14 +1061,29 @@ a.linkcard{display:block}
   <div class="wrap">
     <div class="eyebrow-row">
       <span><span class="num">05</span> &nbsp;/&nbsp; <span class="name">Speaking &amp; Conferences</span></span>
-      <span>9 stages / Paris / Rome / Brussels / D.C. / London</span>
+      <span>14 cities / Alpbach / Paris / Madrid / Warsaw / D.C.</span>
     </div>
-    <h2 class="h-display reveal">Conferences, <span class="ital">panels</span>, and student summits.</h2>
+    <h2 class="h-display reveal">Conferences, <span class="ital">panels</span>, and study visits.</h2>
     <div class="grid" id="speak" style="margin-top:64px">
       <div class="card">
         <div class="yr">2026</div>
+        <div class="v">European Forum Alpbach</div>
+        <div class="c"><span>Alpbach</span><span class="role">Workshop lead / Speaker</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2026</div>
+        <div class="v">GTIPA Summit, University of Warsaw</div>
+        <div class="c"><span>Warsaw</span><span class="role">Presenter</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2026</div>
+        <div class="v">2nd GLOBAFA Conference</div>
+        <div class="c"><span>Madrid</span><span class="role">Presenter</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2026</div>
         <div class="v">55th EBES Conference</div>
-        <div class="c"><span>Budapest</span><span class="role">Presenter</span></div>
+        <div class="c"><span>Budapest</span><span class="role">Presenter / Organizing team</span></div>
       </div>
       <div class="card">
         <div class="yr">2026</div>
@@ -991,7 +1092,7 @@ a.linkcard{display:block}
       </div>
       <div class="card">
         <div class="yr">2025</div>
-        <div class="v">GLOBAFA Conference</div>
+        <div class="v">1st GLOBAFA Conference</div>
         <div class="c"><span>Budapest</span><span class="role">Presenter</span></div>
       </div>
       <div class="card">
@@ -1006,8 +1107,8 @@ a.linkcard{display:block}
       </div>
       <div class="card">
         <div class="yr">2024</div>
-        <div class="v">MCC, Harvard Student Summit</div>
-        <div class="c"><span>Boston</span><span class="role">Participant</span></div>
+        <div class="v">Harvard Law School</div>
+        <div class="c"><span>Cambridge, MA</span><span class="role">Study visit</span></div>
       </div>
       <div class="card">
         <div class="yr">2024</div>
@@ -1017,7 +1118,17 @@ a.linkcard{display:block}
       <div class="card">
         <div class="yr">2024</div>
         <div class="v">Study of U.S. Institutes Opening</div>
-        <div class="c"><span>Washington D.C.</span><span class="role">Panelist</span></div>
+        <div class="c"><span>Online / Washington D.C.</span><span class="role">Panelist</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2023/24</div>
+        <div class="v">United Nations</div>
+        <div class="c"><span>New York / Vienna</span><span class="role">Study visit</span></div>
+      </div>
+      <div class="card">
+        <div class="yr">2023/24</div>
+        <div class="v">OECD</div>
+        <div class="c"><span>Paris</span><span class="role">Study visit</span></div>
       </div>
       <div class="card">
         <div class="yr">2023</div>
@@ -1054,6 +1165,11 @@ a.linkcard{display:block}
     <h2 class="h-display reveal">Awards from <span class="ital">research</span>, mathematics, and entrepreneurship.</h2>
     <div class="list" id="awardList" style="margin-top:48px">
       <div class="row">
+        <div class="yr">2026</div>
+        <div class="nm">Publication Excellence Award</div>
+        <div class="nt">Corvinus University of Budapest</div>
+      </div>
+      <div class="row">
         <div class="yr">2025</div>
         <div class="nm">Corvinus Students' Scientific Conf.</div>
         <div class="nt">First place</div>
@@ -1065,7 +1181,7 @@ a.linkcard{display:block}
       </div>
       <div class="row">
         <div class="yr">2023</div>
-        <div class="nm">Danube Cup International Entrepreneurship</div>
+        <div class="nm">Danube Cup International Entrepreneurial Competition</div>
         <div class="nt">2nd place Hungary / Int'l final, Regensburg</div>
       </div>
       <div class="row">
@@ -1076,7 +1192,7 @@ a.linkcard{display:block}
       <div class="row">
         <div class="yr">2021</div>
         <div class="nm">BME GTK Students' Scientific Conf.</div>
-        <div class="nt">Special award / Central Bank of Hungary</div>
+        <div class="nt">Special award for outstanding research paper / Central Bank of Hungary</div>
       </div>
       <div class="row">
         <div class="yr">2019</div>
@@ -1122,13 +1238,13 @@ a.linkcard{display:block}
     <h2 class="h-display reveal">Foundation work and <span class="ital">civic</span> roles.</h2>
     <div class="grid" id="civicGrid" style="margin-top:48px">
       <div class="card">
-        <div class="role">President &amp; Legal Representative</div>
-        <h3>Unity in Connectivity Foundation</h3>
-        <p>Hungarian non-profit; programmes in research, education, and digital literacy.</p>
+        <div class="role">Co-founder &amp; President</div>
+        <h3><a class="tlink" href="https://hunicon.org" target="_blank" rel="noopener">Unity in Connectivity Foundation</a></h3>
+        <p>Hungarian non-profit helping young people thrive in a digital age: loneliness, community spaces, digital habits and digital literacy.</p>
       </div>
       <div class="card">
         <div class="role">Founder</div>
-        <h3>LitGloMedia</h3>
+        <h3><a class="tlink" href="https://litglomedia.com/" target="_blank" rel="noopener">LitGloMedia</a></h3>
         <p>Media-literacy fieldwork across the UK, Ireland, Netherlands; presented findings in Hungarian high schools.</p>
       </div>
       <div class="card">
@@ -1139,7 +1255,7 @@ a.linkcard{display:block}
       <div class="card">
         <div class="role">Elected Representative, 2021</div>
         <h3>Student Council, BME</h3>
-        <p>Education and PR teams.</p>
+        <p>Education and PR teams; member of the faculty's Financial and Academic Committees.</p>
       </div>
     </div>
   </div>
@@ -1150,14 +1266,14 @@ a.linkcard{display:block}
   <div class="wrap">
     <div class="eyebrow-row">
       <span><span class="num">08</span> &nbsp;/&nbsp; <span class="name">Now</span></span>
-      <span>As of May 2026</span>
+      <span>As of November 2026</span>
     </div>
     <h2 class="h-display">What I'm <span class="ital">currently</span> working on.</h2>
     <div class="lines" id="nowLines">
-      <div class="line"><div class="k">Researching</div><div class="v">Techno-nationalism in the wake of TSMC's U.S. fab investments.</div></div>
-      <div class="line"><div class="k">Reading</div><div class="v">On industrial policy, complex networks, EU semiconductor strategy.</div></div>
-      <div class="line"><div class="k">Building</div><div class="v">Unity in Connectivity Foundation, programmes for 2026.</div></div>
-      <div class="line"><div class="k">Travelling</div><div class="v">Paris in January (EBES 54), Berlin for CDL.</div></div>
+      <div class="line"><div class="k">Researching</div><div class="v">Where the Chips Fall: which European semiconductor scaleups become unicorns.</div></div>
+      <div class="line"><div class="k">Writing</div><div class="v">Policy and market analyses for Gránit's Grandio Blog.</div></div>
+      <div class="line"><div class="k">Studying</div><div class="v">Finishing the Corvinus MSc; starting a postgraduate diploma in mental health.</div></div>
+      <div class="line"><div class="k">Building</div><div class="v">Unity in Connectivity Foundation, programmes for 2027.</div></div>
     </div>
   </div>
 </section>
@@ -1192,7 +1308,7 @@ a.linkcard{display:block}
         <span class="k">Email</span>
         <span class="v uline" id="emailText">[ reveal ]</span>
       </a>
-      <a class="magnetic" href="https://linkedin.com/in/marcellkov/" target="_blank" rel="noopener">
+      <a class="magnetic" href="https://www.linkedin.com/in/marcellkov/" target="_blank" rel="me noopener">
         <span class="k">LinkedIn</span>
         <span class="v uline">linkedin.com/in/marcellkov</span>
       </a>
@@ -1201,6 +1317,12 @@ a.linkcard{display:block}
         <span class="v uline">Budapest / willing to travel</span>
       </a>
     </div>
+    <p class="elsewhere"><span class="k">Elsewhere</span>
+      <a class="uline" href="https://itif.org/person/marcell-kovacs/" target="_blank" rel="me noopener">ITIF profile</a> /
+      <a class="uline" href="https://github.com/kovacsmarcell" target="_blank" rel="me noopener">GitHub</a> /
+      <a class="uline" href="https://hunicon.org" target="_blank" rel="noopener">hunicon.org</a> /
+      <a class="uline" href="https://litglomedia.com/" target="_blank" rel="noopener">LitGloMedia</a>
+    </p>
     <div class="signoff">
       <div class="avatar" aria-hidden="true"><picture><source type="image/webp" srcset="marcell-kovacs-256.webp" /><img src="marcell-kovacs-256.jpg" width="256" height="256" alt="" loading="lazy" decoding="async" /></picture></div>
       <div class="lang">

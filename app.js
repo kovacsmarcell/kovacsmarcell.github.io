@@ -293,7 +293,7 @@
     { id: "math", label: "Mathematics",          deg: 60,   detail: "Morgan Stanley Special Award" },
     { id: "econ", label: "Economics",            deg: 120,  detail: "MSc International Economy & Business" },
     { id: "pol",  label: "Political Science",    deg: 180,  detail: "BA, Corvinus" },
-    { id: "dip",  label: "Diplomacy",            deg: 240,  detail: "U.S. Embassy Youth Council" },
+    { id: "dip",  label: "Diplomacy",            deg: 240,  detail: "SUSI / Alpbach / Youth Council" },
     { id: "biz",  label: "Entrepreneurship",     deg: 300,  detail: "CDL Berlin / Danube Cup" }
   ];
   let nodes = [], particles = [];
