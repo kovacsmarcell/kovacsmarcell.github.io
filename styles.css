@@ -368,7 +368,9 @@ html[lang="hu"] #about .portrait .scribble::before{content:"\201E";position:rela
 #speaking .grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
 #speaking .card{padding:28px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transition:background .25s;position:relative;overflow:hidden}
 #speaking .card:hover{background:var(--paper-2)}
-#speaking .card::after{content:"→";position:absolute;right:24px;bottom:18px;font-family:'Instrument Serif', serif;font-style:italic;font-size:32px;color:var(--accent-text);opacity:0;transform:translateX(-12px);transition:.3s;pointer-events:none}
+/* the arrow sits in the empty top right corner, level with the year; at the bottom right it
+   covered the end of the role label */
+#speaking .card::after{content:"→";position:absolute;right:24px;top:22px;font-family:'Instrument Serif', serif;font-style:italic;font-size:32px;color:var(--accent-text);opacity:0;transform:translateX(-12px);transition:.3s;pointer-events:none}
 /* The arrow promises a destination, so only a card that has a link shows it: on hover, or while
    the link has keyboard focus. That link covers the whole card, so a click anywhere on it (the
    arrow included) opens the page. Without :has() (before Chrome 105, Firefox 121, Safari 15.4)
