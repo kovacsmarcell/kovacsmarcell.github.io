@@ -58,7 +58,7 @@
       "url": "https://marcellkovacs.me/",
       "name": "Marcell Kovács",
       "inLanguage": "en",
-      "dateModified": "2026-11-23T13:58:00+01:00",
+      "dateModified": "2026-11-23T14:35:25+01:00",
       "isPartOf": { "@id": "https://marcellkovacs.me/#website" },
       "mainEntity": { "@id": "https://marcellkovacs.me/#person" }
     },
@@ -118,7 +118,7 @@
 <!-- the two Instrument Serif files that render the hero name -->
 <link rel="preload" href="/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css?v=20261123">
+<link rel="stylesheet" href="/styles.css?v=2026112302">
 <noscript><style>.intro-curtain,.cursor-dot,.cursor-ring,.railToggle{display:none}.reveal{opacity:1;transform:none}body:not(.intro-done) .hero *{opacity:1!important;animation:none!important}body:not(.scrolled) .topbar{color:var(--ink-2)}</style></noscript>
 
 </head>
@@ -569,6 +569,50 @@
       <span>14 cities / Alpbach / Paris / Madrid / Warsaw&nbsp;/&nbsp;D.C.</span>
     </div>
     <h2 class="h-display reveal">Conferences, <span class="ital">panels</span>, and study visits.</h2>
+    <!-- Photos from the stage: one row per event, three shots each. The files in /photos/ are built
+         by docs/gates/make_photos.py from originals that are kept outside the repo. -->
+    <div class="stage reveal" id="stage">
+      <figure class="shots">
+        <div class="row">
+          <picture>
+            <source type="image/webp" srcset="/photos/marcell-kovacs-portfolio-deep-tech-2026-panel-480.webp 480w, /photos/marcell-kovacs-portfolio-deep-tech-2026-panel-960.webp 960w" sizes="(max-width:880px) 86vw, (max-width:1336px) 32vw, 427px" />
+            <img src="/photos/marcell-kovacs-portfolio-deep-tech-2026-panel-960.jpg" width="960" height="640" loading="lazy" decoding="async" alt="Marcell Kovács on the panel Young People at the Forefront of Deep Tech at Portfolio Deep Tech 2026; the screen behind the stage shows the four participants' names" />
+          </picture>
+          <picture>
+            <source type="image/webp" srcset="/photos/marcell-kovacs-portfolio-deep-tech-2026-speaking-480.webp 480w, /photos/marcell-kovacs-portfolio-deep-tech-2026-speaking-960.webp 960w" sizes="(max-width:880px) 86vw, (max-width:1336px) 32vw, 427px" />
+            <img src="/photos/marcell-kovacs-portfolio-deep-tech-2026-speaking-960.jpg" width="960" height="640" loading="lazy" decoding="async" alt="Marcell Kovács speaking into a microphone on the Portfolio Deep Tech 2026 panel, his name on the screen behind him" />
+          </picture>
+          <picture>
+            <source type="image/webp" srcset="/photos/marcell-kovacs-portfolio-deep-tech-2026-stage-480.webp 480w, /photos/marcell-kovacs-portfolio-deep-tech-2026-stage-960.webp 960w" sizes="(max-width:880px) 86vw, (max-width:1336px) 32vw, 427px" />
+            <img src="/photos/marcell-kovacs-portfolio-deep-tech-2026-stage-960.jpg" width="960" height="640" loading="lazy" decoding="async" alt="The four panel participants on the Portfolio Deep Tech 2026 stage; Marcell Kovács is second from the left" />
+          </picture>
+        </div>
+        <figcaption>
+          <span class="t">Panel: Young People at the Forefront of Deep Tech</span>
+          <span class="m">Portfolio Deep Tech 2026 / Budapest / Photos: <a class="uline" href="https://www.portfolio.hu/rendezvenyek/galeria/deep-tech-2026/3158" target="_blank" rel="noopener">Portfolio</a></span>
+        </figcaption>
+      </figure>
+      <figure class="shots">
+        <div class="row">
+          <picture>
+            <source type="image/webp" srcset="/photos/marcell-kovacs-alpbach-2026-speakers-night-480.webp 480w, /photos/marcell-kovacs-alpbach-2026-speakers-night-960.webp 960w" sizes="(max-width:880px) 86vw, (max-width:1336px) 32vw, 427px" />
+            <img src="/photos/marcell-kovacs-alpbach-2026-speakers-night-960.jpg" width="960" height="640" loading="lazy" decoding="async" alt="The Speakers' Night stage at the European Forum Alpbach 2026; the screen shows the speech title The Legacy We Refuse To Fund and the name Marcell Kovacs" />
+          </picture>
+          <picture>
+            <source type="image/webp" srcset="/photos/marcell-kovacs-alpbach-2026-lectern-480.webp 480w, /photos/marcell-kovacs-alpbach-2026-lectern-960.webp 960w" sizes="(max-width:880px) 86vw, (max-width:1336px) 32vw, 427px" />
+            <img src="/photos/marcell-kovacs-alpbach-2026-lectern-960.jpg" width="960" height="640" loading="lazy" decoding="async" alt="Marcell Kovács speaking at the lectern of the European Forum Alpbach 2026" />
+          </picture>
+          <picture>
+            <source type="image/webp" srcset="/photos/marcell-kovacs-alpbach-2026-stage-480.webp 480w, /photos/marcell-kovacs-alpbach-2026-stage-960.webp 960w" sizes="(max-width:880px) 86vw, (max-width:1336px) 32vw, 427px" />
+            <img src="/photos/marcell-kovacs-alpbach-2026-stage-960.jpg" width="960" height="640" loading="lazy" decoding="async" alt="Marcell Kovács on stage at the European Forum Alpbach 2026, in front of the How Europe Wins backdrop" />
+          </picture>
+        </div>
+        <figcaption>
+          <span class="t">Speech: The Legacy We Refuse To Fund</span>
+          <span class="m">Speakers' Night / European Forum Alpbach 2026</span>
+        </figcaption>
+      </figure>
+    </div>
     <div class="grid" id="speak" style="margin-top:64px">
       <div class="card">
         <div class="yr">2026</div>
@@ -659,6 +703,25 @@
         <div class="yr">2018</div>
         <div class="v">Ars Electronica</div>
         <div class="c"><span>Linz</span><span class="role">Representing Hungary</span></div>
+      </div>
+    </div>
+    <!-- Press: reports that quote me. Both came out on the same day; the original report stands first. -->
+    <div class="press" id="press">
+      <div class="eyebrow-row">
+        <h3 class="name">In the press</h3>
+        <span>Reports on the Deep Tech 2026 panel / November 2026</span>
+      </div>
+      <div class="pubs">
+        <div class="pub">
+          <div class="yr">2026</div>
+          <h4 class="ttl" lang="hu"><a class="tlink" href="https://www.agrarszektor.hu/vallalkozas/20261120/laborok-falai-kozott-ragadnak-a-hazai-fejlesztesek-penzhiany-es-kishituseg-is-hatraltatja-az-attorest-65831" target="_blank" rel="noopener">Laborok falai között ragadnak a hazai fejlesztések: pénzhiány és kishitűség is hátráltatja az áttörést</a></h4>
+          <div class="meta"><b lang="hu">Agrárszektor</b>Report on the panel<br>Quotes me on startup funding in the US and Europe<br>20 November 2026<br>in Hungarian</div>
+        </div>
+        <div class="pub">
+          <div class="yr">2026</div>
+          <h4 class="ttl" lang="hu"><a class="tlink" href="https://www.agronaplo.hu/agrarhirek/20261120/hiaba-a-zsenialis-magyar-fejlesztesek-kiderult-miert-ragadnak-a-laborok-falai-kozott-41457" target="_blank" rel="noopener">Hiába a zseniális magyar fejlesztések: kiderült, miért ragadnak a laborok falai között</a></h4>
+          <div class="meta"><b lang="hu">Agro Napló</b>Report on the panel<br>Quotes me on startup funding in the US and Europe<br>20 November 2026<br>in Hungarian</div>
+        </div>
       </div>
     </div>
   </div>
@@ -893,7 +956,7 @@
 }
 </script>
 <script src="/world-path.js?v=20261116" defer></script>
-<script src="/app.js?v=20261123" defer></script>
+<script src="/app.js?v=2026112302" defer></script>
 
 </body>
 </html>

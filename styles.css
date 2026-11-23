@@ -306,14 +306,16 @@ html[lang="hu"] #about .portrait .scribble::before{content:"\201E";position:rela
 
 /* ================ RESEARCH ================ */
 #research{background:var(--paper-2)}
-#research .pubs{display:grid;gap:0;border-top:1px solid var(--rule)}
-#research .pub{display:grid;grid-template-columns:80px 1fr 320px;gap:40px;padding:32px 0;border-bottom:1px solid var(--rule);align-items:start;cursor:default;transition:padding .35s ease, background .35s ease}
+/* the same row style lists the press reports in the Speaking section (#speaking .press) */
+#research .pubs, #speaking .pubs{display:grid;gap:0;border-top:1px solid var(--rule)}
+#research .pub, #speaking .pub{display:grid;grid-template-columns:80px 1fr 320px;gap:40px;padding:32px 0;border-bottom:1px solid var(--rule);align-items:start;cursor:default;transition:padding .35s ease, background .35s ease}
 #research .pub:hover{padding-left:18px;padding-right:18px;background:var(--paper)}
-#research .pub .yr{font-family:'Instrument Serif', serif;font-size:36px;color:var(--accent-text);font-style:italic;line-height:1}
-#research .pub .ttl{font-family:'Instrument Serif', serif;font-weight:400;font-size:clamp(22px, 2.2vw, 30px);line-height:1.25;color:var(--ink);text-wrap:pretty}
-#research .pub .meta{font:500 11px/1.6 'JetBrains Mono', monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
-#research .pub .meta b{display:block;color:var(--ink-2);font-weight:500;margin-bottom:6px}
-@media (max-width:880px){#research .pub{grid-template-columns:60px 1fr;gap:20px}#research .pub .meta{grid-column:2}}
+#speaking .pub:hover{padding-left:18px;padding-right:18px;background:var(--paper-2)}
+#research .pub .yr, #speaking .pub .yr{font-family:'Instrument Serif', serif;font-size:36px;color:var(--accent-text);font-style:italic;line-height:1}
+#research .pub .ttl, #speaking .pub .ttl{font-family:'Instrument Serif', serif;font-weight:400;font-size:clamp(22px, 2.2vw, 30px);line-height:1.25;color:var(--ink);text-wrap:pretty}
+#research .pub .meta, #speaking .pub .meta{font:500 11px/1.6 'JetBrains Mono', monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+#research .pub .meta b, #speaking .pub .meta b{display:block;color:var(--ink-2);font-weight:500;margin-bottom:6px}
+@media (max-width:880px){#research .pub, #speaking .pub{grid-template-columns:60px 1fr;gap:20px}#research .pub .meta, #speaking .pub .meta{grid-column:2}}
 /* /hu/ only: the last row (the working paper) carries the word "Készül" instead of a year; in the
    narrow 60px year column it would run into the title, so it is set smaller there */
 @media (max-width:880px){html[lang="hu"] #pubs .pub:last-child .yr{font-size:28px}}
@@ -387,6 +389,27 @@ html[lang="hu"] #about .portrait .scribble::before{content:"\201E";position:rela
 #speaking .card .c > *{margin-block:-.25em}
 #speaking .card .c .role{color:var(--accent-text)}
 @media (max-width:880px){#speaking .grid{grid-template-columns:1fr}}
+/* Photos from the stage, above the cards: one row per event, three 3:2 shots each, in the three
+   columns of the card grid, with the same hairlines between them. On a narrow screen a row is a
+   strip to swipe sideways, so six photos do not push the cards a whole screen down. */
+#speaking .stage{margin-top:64px;display:grid;gap:44px}
+#speaking .shots .row{display:grid;grid-template-columns:repeat(3, 1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+#speaking .shots img{display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover;background:var(--paper-2)}
+#speaking .shots figcaption{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 24px;padding-top:14px}
+#speaking .shots .t{font-family:'Instrument Serif', serif;font-size:22px;line-height:1.2;color:var(--ink);text-wrap:pretty}
+#speaking .shots .m{font:500 11px/1.5 'JetBrains Mono', monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+#speaking .shots .m a{color:var(--accent-text)}
+@media (max-width:880px){
+  #speaking .stage{gap:36px}
+  #speaking .shots .row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  #speaking .shots .row::-webkit-scrollbar{display:none}
+  #speaking .shots .row > *{flex:0 0 86%;scroll-snap-align:start}
+}
+/* press reports under the cards: a sub-list like the analyses under the publications */
+#speaking .press{margin-top:clamp(64px, 8vw, 96px)}
+#speaking .press .eyebrow-row{margin-bottom:0}
+#speaking .press h3{font:inherit}
+#speaking .press .pubs{border-top:none}
 
 /* ================ AWARDS ================ */
 #awards{background:var(--paper-2)}
