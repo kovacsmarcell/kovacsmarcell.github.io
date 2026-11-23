@@ -244,6 +244,11 @@ section{position:relative;padding:120px 28px;border-top:1px solid var(--rule)}
 .eyebrow-row{display:flex;justify-content:space-between;align-items:baseline;font:500 11px/1.5 'JetBrains Mono', monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3);margin-bottom:48px;padding-bottom:14px;border-bottom:1px solid var(--rule)}
 .eyebrow-row .num{color:var(--accent-text)}
 .eyebrow-row .name{color:var(--ink)}
+/* About and Experience have no display heading, so their label row carries the section's h2;
+   it looks exactly like the label rows of the other sections */
+.eyebrow-row h2{font:inherit}
+/* a section takes focus only from script, after an in-page link (app.js), so it shows no focus ring */
+section[tabindex="-1"]:focus{outline:none}
 /* a label that wraps (narrow screens, long Hungarian labels) gets 1.5 line spacing so accents clear
    the line above; the negative half-leading keeps a one-line label exactly as tall as with 11px/1 */
 .eyebrow-row > *{margin-block:-.25em}

@@ -176,7 +176,15 @@
     a.addEventListener('click', e=>{
       const id = a.getAttribute('href').slice(1);
       const t = document.getElementById(id);
-      if(t){ e.preventDefault(); t.scrollIntoView({behavior: reduceMotion.matches ? 'auto' : 'smooth', block:'start'}); }
+      if(t){
+        e.preventDefault();
+        t.scrollIntoView({behavior: reduceMotion.matches ? 'auto' : 'smooth', block:'start'});
+        // Keyboard focus goes with the jump, as it would with a plain anchor link. Otherwise
+        // it stays on the link that was pressed (in the rail, which then closes), and the
+        // next Tab starts again from the top of the page.
+        if(!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '-1');
+        t.focus({preventScroll:true});
+      }
     });
   });
 
