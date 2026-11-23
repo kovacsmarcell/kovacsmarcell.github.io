@@ -186,14 +186,35 @@
   // and read again after every mode change (empty string = read pending)
   let accentColor = '';
   const modeLabels = ui.modeToggle || {};
-  function setMode(m){
+  // The chosen mode is kept for the browser session (sessionStorage, key "mode"), so it
+  // survives a reload, the switch between the two language pages and going back. It is
+  // written only when the visitor presses the toggle. A small script in the <head> of each
+  // page applies it before the first paint; here the button label follows it.
+  // Session-long on purpose, not permanent: see ADR-003.
+  const MODE_KEY = 'mode';
+  function storedMode(){
+    try {
+      const m = sessionStorage.getItem(MODE_KEY);
+      return (m==='dark' || m==='light') ? m : null;
+    } catch(e){ return null; } // storage blocked: the mode simply is not remembered
+  }
+  function setMode(m, remember){
     document.documentElement.dataset.mode = m;
     if(modeLabels[m]) mt.textContent = modeLabels[m];
     accentColor = '';
+    if(remember){ try { sessionStorage.setItem(MODE_KEY, m); } catch(e){} }
   }
+  setMode(document.documentElement.dataset.mode==='dark' ? 'dark' : 'light', false);
   mt.addEventListener('click', ()=>{
     const cur = document.documentElement.dataset.mode || 'light';
-    setMode(cur==='light' ? 'dark' : 'light');
+    setMode(cur==='light' ? 'dark' : 'light', true);
+    startDraw(); // with reduced motion the canvas needs one frame in the new accent colour
+  });
+  // a page brought back by the back / forward buttons still shows the mode it was left in
+  window.addEventListener('pageshow', e=>{
+    if(!e.persisted) return;
+    const m = storedMode();
+    if(m && m !== document.documentElement.dataset.mode){ setMode(m, false); startDraw(); }
   });
 
   /* ============ cursor ============ */

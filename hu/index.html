@@ -72,6 +72,10 @@
 }
 </script>
 
+<!-- A colour mode chosen earlier in this browser session (the Light / Dark switch stores it)
+     is applied here, before the first paint. app.js then brings the switch label in line. -->
+<script>try{var m=sessionStorage.getItem('mode');if(m==='dark'||m==='light')document.documentElement.dataset.mode=m}catch(e){}</script>
+
 <!-- the two Instrument Serif files that render the hero name -->
 <link rel="preload" href="/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
