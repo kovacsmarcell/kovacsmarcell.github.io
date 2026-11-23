@@ -207,8 +207,10 @@
     } catch(e){ return null; } // storage blocked: the mode simply is not remembered
   }
   function setMode(m, remember){
-    document.documentElement.dataset.mode = m;
-    if(modeLabels[m]) mt.textContent = modeLabels[m];
+    // only touch what differs: writing data-mode again, even with the same value, makes
+    // the browser restyle the whole page
+    if(document.documentElement.dataset.mode !== m) document.documentElement.dataset.mode = m;
+    if(modeLabels[m] && mt.textContent !== modeLabels[m]) mt.textContent = modeLabels[m];
     accentColor = '';
     if(remember){ try { sessionStorage.setItem(MODE_KEY, m); } catch(e){} }
   }
@@ -233,13 +235,16 @@
   const noHover = matchMedia('(hover: none)');
   let cursorRunning = false;
   let mx=window.innerWidth/2, my=window.innerHeight/2, rx=mx, ry=my;
-  window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+  window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; startCursor(); });
   function loop(){
     if(noHover.matches){ cursorRunning = false; return; }
     rx += (mx-rx)*0.18;
     ry += (my-ry)*0.18;
     dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
     ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+    // Once the ring has caught up with the pointer there is nothing left to move, so the
+    // loop rests until the next mousemove instead of restyling the page 60 times a second.
+    if(Math.abs(mx-rx) < 0.05 && Math.abs(my-ry) < 0.05){ cursorRunning = false; return; }
     requestAnimationFrame(loop);
   }
   function startCursor(){
