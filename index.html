@@ -491,12 +491,16 @@
       <span><span class="num">04</span> &nbsp;/&nbsp; <span class="name">Education</span></span>
       <span>Eight universities / Europe &amp; North America</span>
     </div>
-    <h2 class="h-display reveal">Eight universities, <span class="ital">four</span> degree fields.</h2>
     <div class="grid">
-      <!-- decoration: the school list next to it carries the same cities as text -->
-      <div class="map-wrap reveal" id="mapWrap" aria-hidden="true">
-        <svg class="mapsvg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" id="worldSvg"></svg>
-        <div id="pins"></div>
+      <!-- left column: the heading with the map under it; right column: the schools. On a desktop
+           the whole section is meant to fit one screen, so the map and the schools are seen together. -->
+      <div class="lead">
+        <h2 class="h-display reveal">Eight universities, <span class="ital">four</span> degree fields.</h2>
+        <!-- decoration: the school list next to it carries the same cities as text -->
+        <div class="map-wrap reveal" id="mapWrap" aria-hidden="true">
+          <svg class="mapsvg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" id="worldSvg"></svg>
+          <div id="pins"></div>
+        </div>
       </div>
       <div class="schools reveal" id="schools">
         <div class="school" data-i="0" data-city="Budapest" data-lat="47.50" data-lng="19.04">
