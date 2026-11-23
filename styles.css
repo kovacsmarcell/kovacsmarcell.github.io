@@ -3,7 +3,7 @@
    Shared stylesheet for every language version of the page (/ and /hu/).
    Moved out of the inline <style> of index.html. Changes since then: self-hosted
    fonts (latin-ext cut down to the letters in use), the --accent-text colour, the
-   ticker duration (60 s to 87 s, same speed for the longer list), rules for the new
+   ticker duration (60 s to 87 s, then 91 s, same speed for the longer list), rules for the new
    content (analyses block, Elsewhere line, linked titles .tlink, the /hu/ "Készül"
    size, mode-toggle hover on the scrolled bar, the dark divider label em), line
    spacing for eyebrow labels that wrap, a gap between city and role in the speaking
@@ -241,7 +241,9 @@ body:not(.scrolled) .topbar{color:#c9c4b3}
 
 /* ================ ticker ================ */
 .ticker{background:var(--ink);color:var(--paper);overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);position:relative}
-.ticker .row{display:flex;gap:64px;padding:18px 0;animation:tk 87s linear infinite;white-space:nowrap;width:max-content}
+/* 91s for 24 items: the duration grows with the list so the speed stays the same (about 85px a
+   second on a desktop). One more item of average length adds roughly 4 seconds. */
+.ticker .row{display:flex;gap:64px;padding:18px 0;animation:tk 91s linear infinite;white-space:nowrap;width:max-content}
 .ticker:hover .row{animation-play-state:paused}
 .ticker span{font:500 12px/1 'JetBrains Mono', monospace;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:18px}
 .ticker span::after{content:"◆";color:var(--accent);font-size:8px}
