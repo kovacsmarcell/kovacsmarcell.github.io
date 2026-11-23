@@ -20,6 +20,7 @@ main{max-width:560px;width:100%}
 .code{font:500 12px/1 ui-monospace,"JetBrains Mono",Consolas,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
 h1{font:400 clamp(40px,9vw,72px)/1.05 "Instrument Serif",Georgia,"Times New Roman",serif;margin:20px 0 16px}
 p{color:var(--ink-3);font-size:17px}
+p + p{margin-top:10px}
 .rule{height:1px;background:var(--rule);margin:28px 0}
 a{color:var(--accent);text-underline-offset:4px}
 a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
@@ -30,8 +31,10 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
   <div class="code">404 / Not in the index</div>
   <h1>This page does not exist.</h1>
   <p>The address may be mistyped, or the page was moved or removed.</p>
+  <p lang="hu">Ez az oldal nem létezik. Lehet, hogy elírás van a címben, vagy az oldalt áthelyezték, esetleg törölték.</p>
   <div class="rule"></div>
   <p><a href="/">Go to the home page of Marcell Kovács</a></p>
+  <p lang="hu"><a href="/hu/" hreflang="hu">Tovább Kovács Marcell magyar oldalára</a></p>
 </main>
 </body>
 </html>
