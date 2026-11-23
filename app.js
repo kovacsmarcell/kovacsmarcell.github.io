@@ -137,23 +137,27 @@
   rail.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setTimeout(()=>setRail(false), 200)));
 
   // auto-show on hero, auto-hide everywhere else (unless user manually toggled)
+  // The rail is open while the hero holds it: until the hero's lower edge comes up to the rail's
+  // own lower edge. From there on the next section would slide under an open menu, so it closes.
+  // (It used to wait until only a tenth of the hero was left on screen: 820px of scrolling on a
+  // 900px tall window, with the menu lying over the first section's text all the way.)
   const heroEl = document.getElementById('hero');
-  let onHero = true;
+  let onHero = false;
   let userOverride = false; // user manually toggled: pause hero-based auto behavior
   railToggle.addEventListener('click', () => { userOverride = true; });
-  const heroIo = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{
-      onHero = en.isIntersecting;
-      if(userOverride) return;
-      if(window.innerWidth <= 720) return; // mobile: rail stays manually controlled
-      setRail(onHero);
-    });
-  }, {threshold: 0.1});
-  if(heroEl) heroIo.observe(heroEl);
+  function syncRail(){
+    const holds = !!heroEl && heroEl.getBoundingClientRect().bottom > rail.getBoundingClientRect().bottom + 24;
+    if(holds === onHero) return;
+    onHero = holds;
+    if(userOverride) return;
+    if(window.innerWidth <= 720) return; // mobile: rail stays manually controlled
+    setRail(onHero);
+  }
 
   // when off-hero and rail is open, any meaningful scroll closes it
   let lastY = window.scrollY;
   window.addEventListener('scroll', () => {
+    syncRail(); // reads the layout, so it runs before anything below writes to it
     // toggle topbar background after a small scroll
     document.body.classList.toggle('scrolled', window.scrollY > 40);
     const dy = Math.abs(window.scrollY - lastY);
@@ -163,13 +167,10 @@
       lastY = window.scrollY;
     }
   }, {passive:true});
-  // same check once at start, for a page that opens already scrolled (reload, #anchor)
+  window.addEventListener('resize', syncRail);
+  // same checks once at start, for a page that opens already scrolled (reload, #anchor)
+  syncRail();
   document.body.classList.toggle('scrolled', window.scrollY > 40);
-
-  // initial state based on load position
-  setTimeout(()=>{
-    if(heroEl && heroEl.getBoundingClientRect().bottom < 200) setRail(false);
-  }, 100);
 
   /* ============ smooth scroll ============ */
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
