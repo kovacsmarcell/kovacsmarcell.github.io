@@ -625,3 +625,22 @@ a.linkcard{display:block}
 .signmarquee span{font-family:'Instrument Serif', serif;font-style:italic;font-size:clamp(64px, 9vw, 148px);line-height:1;letter-spacing:-.03em;color:var(--ink);display:inline-flex;align-items:center;gap:60px}
 .signmarquee span::after{content:"✦";color:var(--accent);font-size:.4em;font-style:normal}
 @keyframes tk2{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============ REDUCED MOTION ============ */
+/* For a visitor who asks the system for less motion, nothing moves on its own. The hero is
+   there at once (the entrance animations and their delays are dropped along with the curtain,
+   see the intro block above), content does not wait for the scroll reveal, the map pins and
+   the scroll cue stand still. The ticker and the marquee become still rows that can be
+   scrolled sideways, each item once. app.js reads the same setting for what moves by script:
+   the hero canvas, the count-up, smooth scrolling and the pointer effects. This block stays
+   last in the file so that it wins over the rules it switches off. */
+@media (prefers-reduced-motion: reduce){
+  body.intro-done .hero *{animation:none!important}
+  .hero .scroll-cue::after{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  #education .pin::before{animation:none}
+  .ticker, .signmarquee{overflow-x:auto;scrollbar-width:none}
+  .ticker::-webkit-scrollbar, .signmarquee::-webkit-scrollbar{display:none}
+  .ticker .row, .signmarquee .row{animation:none;padding-inline:28px}
+  .loopcopy{display:none}
+}

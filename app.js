@@ -18,6 +18,12 @@
     try { return JSON.parse(el.textContent) || {}; } catch(e){ return {}; }
   })();
 
+  /* ============ less motion ============ */
+  // A visitor who asks the system for reduced motion gets a page where nothing moves
+  // on its own. styles.css switches the CSS animations off; the parts that move by
+  // script (hero canvas, count-up, smooth scrolling, pointer effects) check this.
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
   /* ============ map: real world geometry ============ */
   const svg = document.getElementById('worldSvg');
   svg.innerHTML = `
@@ -84,8 +90,8 @@
     entries.forEach(en=>{
       if(en.isIntersecting){
         en.target.classList.add('in');
-        // count up
-        if(en.target.querySelectorAll){
+        // count up (with reduced motion the numbers simply stay as written in the page)
+        if(!reduceMotion.matches && en.target.querySelectorAll){
           en.target.querySelectorAll('[data-count]').forEach(el=>{
             const target = +el.dataset.count;
             const dur = 1200;
@@ -170,7 +176,7 @@
     a.addEventListener('click', e=>{
       const id = a.getAttribute('href').slice(1);
       const t = document.getElementById(id);
-      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior: reduceMotion.matches ? 'auto' : 'smooth', block:'start'}); }
     });
   });
 
@@ -223,6 +229,7 @@
   /* ============ magnetic ============ */
   document.querySelectorAll('.magnetic').forEach(el=>{
     el.addEventListener('mousemove', e=>{
+      if(reduceMotion.matches) return;
       const r = el.getBoundingClientRect();
       const x = e.clientX - r.left - r.width/2;
       const y = e.clientY - r.top - r.height/2;
@@ -285,6 +292,7 @@
     const chars = heroName.querySelectorAll('.ch');
     const hero = document.getElementById('hero');
     hero.addEventListener('mousemove', e => {
+      if(reduceMotion.matches) return;
       const r = hero.getBoundingClientRect();
       const mx = e.clientX - r.left, my = e.clientY - r.top;
       chars.forEach(ch => {
@@ -376,7 +384,8 @@
     });
   }
   resize();
-  window.addEventListener('resize', resize);
+  // startDraw: with reduced motion the loop is not running, so the new size needs one frame
+  window.addEventListener('resize', () => { resize(); startDraw(); });
 
   // mouse pulls nodes slightly
   let hmx = -9999, hmy = -9999;
@@ -389,6 +398,7 @@
 
   // The loop runs only while the hero is on screen and the tab is visible.
   // t advances per drawn frame, so a paused loop resumes exactly where it stopped.
+  // With reduced motion there is no loop: startDraw() paints a single still frame.
   let t=0;
   let drawId = 0;          // pending frame id, 0 while the loop is stopped
   let heroInView = true;   // updated by the observer below
@@ -481,7 +491,7 @@
       lab.style.top  = (n.y + oy) + 'px';
     });
 
-    drawId = requestAnimationFrame(draw);
+    if(!reduceMotion.matches) drawId = requestAnimationFrame(draw);
   }
   function getCSS(v){
     return getComputedStyle(document.documentElement).getPropertyValue(v).trim();
@@ -492,6 +502,9 @@
     startDraw();
   }, {rootMargin: '200px 0px'}).observe(hero);
   document.addEventListener('visibilitychange', startDraw);
+  // the setting can change while the page is open: turning it off restarts the loop
+  if(reduceMotion.addEventListener) reduceMotion.addEventListener('change', startDraw);
+  else if(reduceMotion.addListener) reduceMotion.addListener(startDraw);
   startDraw();
 
 })();
