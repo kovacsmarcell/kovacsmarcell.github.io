@@ -224,7 +224,8 @@ body:not(.scrolled) .topbar{color:#c9c4b3}
 @keyframes scrolldn{0%{height:0;opacity:0}50%{opacity:1}100%{height:40px;opacity:0;transform:translateY(20px)}}
 
 /* hero discipline labels (positioned by JS) */
-.hero .nodelabel{position:absolute;font:500 10px/1.2 'JetBrains Mono', monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(241, 236, 221, .78);pointer-events:none;white-space:nowrap;transform:translate(-50%, -50%);transition:opacity .4s;text-align:center}
+/* app.js moves each label with an inline transform from the hero's top left corner */
+.hero .nodelabel{position:absolute;left:0;top:0;font:500 10px/1.2 'JetBrains Mono', monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(241, 236, 221, .78);pointer-events:none;white-space:nowrap;transform:translate(-50%, -50%);transition:opacity .4s;text-align:center}
 @media (max-width:1024px){.hero .nodelabel{display:none}}
 .hero .nodelabel small{display:block;font-family:'Instrument Serif', serif;font-style:italic;letter-spacing:0;text-transform:none;color:rgba(168, 184, 255, .7);font-size:11px;margin-top:4px}
 

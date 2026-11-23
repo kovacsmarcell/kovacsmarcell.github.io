@@ -390,9 +390,15 @@
     placeLabels();
   }
   // place HTML labels next to nodes
+  // A label is moved with a transform (styles.css pins it to the hero's top left corner):
+  // the draw loop repositions all six on every frame, and a transform does not make the
+  // browser lay the page out again, which left / top did 60 times a second.
+  const labelAt = (x, y) => `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+  let labelEls = [];
   function placeLabels(){
     // remove old
-    hero.querySelectorAll('.nodelabel').forEach(n=>n.remove());
+    labelEls.forEach(n=>n.remove());
+    labelEls = [];
     nodes.forEach(n=>{
       const lab = document.createElement('div');
       lab.className = 'nodelabel';
@@ -401,8 +407,7 @@
       const len = Math.hypot(dx, dy);
       const ox = dx/len * 30; // push outward
       const oy = dy/len * 30;
-      lab.style.left = (n.ax + ox) + 'px';
-      lab.style.top  = (n.ay + oy) + 'px';
+      lab.style.transform = labelAt(n.ax + ox, n.ay + oy);
       // label text, then the detail line in a <small>
       const d = disc.find(d => d.id===n.id);
       lab.textContent = d.label;
@@ -410,6 +415,7 @@
       small.textContent = d.detail;
       lab.appendChild(small);
       hero.appendChild(lab);
+      labelEls.push(lab);
     });
   }
   resize();
@@ -509,15 +515,13 @@
     });
 
     // re-position labels
-    const labels = hero.querySelectorAll('.nodelabel');
-    labels.forEach((lab, i)=>{
+    labelEls.forEach((lab, i)=>{
       const n = nodes[i]; if(!n) return;
       const cx=W/2, cy=H/2;
       const dx = n.x-cx, dy = n.y-cy;
       const len = Math.max(1, Math.hypot(dx, dy));
       const ox = dx/len * 40, oy = dy/len * 40;
-      lab.style.left = (n.x + ox) + 'px';
-      lab.style.top  = (n.y + oy) + 'px';
+      lab.style.transform = labelAt(n.x + ox, n.y + oy);
     });
 
     if(!reduceMotion.matches) drawId = requestAnimationFrame(draw);
