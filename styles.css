@@ -279,6 +279,15 @@ section[tabindex="-1"]:focus{outline:none}
 .h-display{font-family:'Instrument Serif', serif;font-weight:400;font-size:clamp(36px, 4.5vw, 64px);line-height:.95;letter-spacing:-0.025em;color:var(--ink);text-wrap:balance}
 .h-display .ital{font-style:italic;color:var(--accent-text)}
 
+/* Older items, folded (PRD 06). Each long list keeps what matters now in view and folds its older
+   items into a <details class="more">: the page is far shorter, the folded items are still in the
+   page for search engines and one click (or Enter) away for a reader. No script involved. */
+details.more > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--rule);font:500 11px/1.5 'JetBrains Mono', monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);transition:color .25s, padding .25s}
+details.more > summary::-webkit-details-marker{display:none}
+details.more > summary::after{content:"+";margin-left:auto;font:400 24px/.8 'Instrument Serif', serif;color:var(--accent-text)}
+details.more[open] > summary::after{content:"\2212"}
+details.more > summary:hover{color:var(--accent-text);padding-left:10px}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease, transform .9s ease}
 .reveal.in{opacity:1;transform:none}
@@ -337,12 +346,22 @@ html[lang="hu"] #about .portrait .scribble::before{content:"\201E";position:rela
 #research .analyses .pubs{border-top:none}
 #research .analyses .ttl{grid-column:2 / -1}
 @media (max-width:880px){#research .analyses .ttl{grid-column:1 / -1}}
+/* folded rows: no second top line under the fold row; in the analyses the fold row starts in the title column */
+#research details.more .pubs{border-top:none}
+#research .analyses details.more > summary{padding-left:120px}
+#research .analyses details.more > summary:hover{padding-left:130px}
+@media (max-width:880px){#research .analyses details.more > summary, #research .analyses details.more > summary:hover{padding-left:0}}
 
 /* ================ EXPERIENCE ================ */
 #experience .wrap2{display:grid;grid-template-columns:240px 1fr;gap:80px}
 #experience .legend{position:sticky;top:120px;align-self:start;font-family:'Instrument Serif', serif;font-style:italic;font-size:22px;color:var(--ink-3);line-height:1.4;text-wrap:pretty}
-#experience ol{list-style:none;border-left:1px solid var(--rule);padding-left:48px}
-#experience li{position:relative;padding:0 0 44px;break-inside:avoid}
+/* .roles carries the timeline line: it holds the list in view and, under it, the folded older roles */
+#experience .roles{border-left:1px solid var(--rule);padding-left:48px}
+#experience ol{list-style:none}
+#experience li{position:relative;padding:0 0 34px;break-inside:avoid}
+#experience details.more > summary{border-top:1px solid var(--rule)}
+#experience details.more ol{padding-top:30px}
+#experience details.more li:last-child{padding-bottom:6px}
 #experience li::before{content:"";position:absolute;left:-54px;top:8px;width:11px;height:11px;border-radius:99px;background:var(--paper);border:2px solid var(--accent);transition:transform .3s, background .3s}
 #experience li:hover::before{transform:scale(1.6);background:var(--accent)}
 #experience li .per{font:500 11px/1 'JetBrains Mono', monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
@@ -410,18 +429,18 @@ html[lang="hu"] #about .portrait .scribble::before{content:"\201E";position:rela
 #speaking .card .c > *{margin-block:-.25em}
 #speaking .card .c .role{color:var(--accent-text)}
 @media (max-width:880px){#speaking .grid{grid-template-columns:1fr}}
-/* Photos from the stage, above the cards: one row per event, three 3:2 shots each, in the three
-   columns of the card grid, with the same hairlines between them. On a narrow screen a row is a
-   strip to swipe sideways, so six photos do not push the cards a whole screen down. */
-#speaking .stage{margin-top:48px;display:grid;gap:36px}
-#speaking .shots .row{display:grid;grid-template-columns:repeat(3, 1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+/* Photos from the stage, above the cards: the two events side by side, two 3:2 shots each, with
+   hairlines between the shots. On a narrow screen the events stack and each pair is a strip to
+   swipe sideways. */
+#speaking .stage{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px 24px;align-items:start}
+#speaking .shots .row{display:grid;grid-template-columns:repeat(2, 1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
 #speaking .shots img{display:block;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover;background:var(--paper-2)}
-#speaking .shots figcaption{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 24px;padding-top:14px}
-#speaking .shots .t{font-family:'Instrument Serif', serif;font-size:22px;line-height:1.2;color:var(--ink);text-wrap:pretty}
+#speaking .shots figcaption{display:flex;flex-direction:column;gap:5px;padding-top:12px}
+#speaking .shots .t{font-family:'Instrument Serif', serif;font-size:20px;line-height:1.2;color:var(--ink);text-wrap:pretty}
 #speaking .shots .m{font:500 11px/1.5 'JetBrains Mono', monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
 #speaking .shots .m a{color:var(--accent-text)}
 @media (max-width:880px){
-  #speaking .stage{gap:36px}
+  #speaking .stage{grid-template-columns:1fr;gap:28px}
   #speaking .shots .row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
   #speaking .shots .row::-webkit-scrollbar{display:none}
   #speaking .shots .row > *{flex:0 0 86%;scroll-snap-align:start}
@@ -431,6 +450,8 @@ html[lang="hu"] #about .portrait .scribble::before{content:"\201E";position:rela
 #speaking .press .eyebrow-row{margin-bottom:0}
 #speaking .press h3{font:inherit}
 #speaking .press .pubs{border-top:none}
+/* the folded older cards: their grid keeps the left and top lines of the grid above it */
+#speaking details.more .grid{margin-top:-1px}
 
 /* ================ AWARDS ================ */
 #awards{background:var(--paper-2)}
@@ -441,6 +462,16 @@ html[lang="hu"] #about .portrait .scribble::before{content:"\201E";position:rela
 #awards .row .yr{font-family:'Instrument Serif', serif;font-size:24px;color:var(--accent-text);font-style:italic}
 #awards .row .nm{font-family:'Instrument Serif', serif;font-size:24px;color:var(--ink);line-height:1.2}
 #awards .row .nt{font:500 11px/1.4 'JetBrains Mono', monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);text-align:right;max-width:32ch}
+/* on a desktop the twelve awards stand in two columns (read down the left, then down the right),
+   each with its note under its name: half the height of one long list */
+#awards details.more .row:first-child{border-top:none}
+@media (min-width:881px){
+  #awards .list{display:block;columns:2;column-gap:56px;border-bottom:1px solid var(--rule)}
+  #awards .row{break-inside:avoid;grid-template-columns:64px 1fr;gap:4px 20px;padding:14px 0}
+  #awards .row:last-child{border-bottom:none}
+  #awards .row .nm{font-size:21px}
+  #awards .row .nt{grid-column:2;text-align:left;max-width:none}
+}
 
 /* ================ CIVIC ================ */
 #civic .grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:0;border:1px solid var(--rule)}
@@ -450,6 +481,15 @@ html[lang="hu"] #about .portrait .scribble::before{content:"\201E";position:rela
 #civic .card .role{font:500 11px/1 'JetBrains Mono', monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-text);margin-bottom:18px}
 #civic .card h3{font-family:'Instrument Serif', serif;font-weight:400;font-size:clamp(23px, 2vw, 29px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);text-wrap:pretty;margin-bottom:14px}
 #civic .card p{color:var(--ink-2);line-height:1.55;text-wrap:pretty}
+/* on a wide screen the four cards stand in one row */
+@media (min-width:1200px){
+  #civic .grid{grid-template-columns:repeat(4, 1fr)}
+  #civic .card{padding:26px 24px;border-bottom:none}
+  #civic .card:nth-child(2n){border-right:1px solid var(--rule)}
+  #civic .card:last-child{border-right:none}
+  #civic .card h3{font-size:24px}
+  #civic .card p{font-size:14.5px}
+}
 @media (max-width:880px){#civic .grid{grid-template-columns:1fr}#civic .card{border-right:none}#civic .card:not(:last-child){border-bottom:1px solid var(--rule)}}
 
 /* ================ NOW ================ */
@@ -527,8 +567,8 @@ html[lang="hu"] #about .portrait .scribble::before{content:"\201E";position:rela
   #about .stats > div{padding:20px 18px}
 
   /* experience: tighter timeline */
-  #experience ol{padding-left:28px}
-  #experience li{padding-bottom:32px}
+  #experience .roles{padding-left:28px}
+  #experience li{padding-bottom:26px}
   #experience li::before{left:-34px}
   #experience li .role{font-size:18px}
   #experience li .org{font-size:17px}
@@ -547,10 +587,10 @@ html[lang="hu"] #about .portrait .scribble::before{content:"\201E";position:rela
   #speaking .card::after{top:12px;right:16px;font-size:26px}
 
   /* awards list: stack so the note doesn't push off the right edge */
-  #awards .row{grid-template-columns:1fr;gap:4px;padding:14px 0}
+  #awards .row{grid-template-columns:44px minmax(0, 1fr);gap:3px 12px;padding:12px 0}
   #awards .row .yr{font-size:16px}
   #awards .row .nm{font-size:17px;line-height:1.25}
-  #awards .row .nt{text-align:left;max-width:none;font-size:10px;letter-spacing:.14em}
+  #awards .row .nt{grid-column:2;text-align:left;max-width:none;font-size:10px;letter-spacing:.14em}
 
   /* civic already 1col below 880; tighten */
   #civic .card{padding:24px 20px}
@@ -641,8 +681,8 @@ body.intro-done .hero .nodelabel{animation:fadeIn 400ms 1150ms both ease}
 }
 
 /* full-bleed numeral dividers */
-.numdivider{position:relative;padding:0;margin:0;overflow:hidden;height:clamp(110px, 12.5vw, 168px);display:flex;align-items:center;justify-content:center;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper)}
-.numdivider .big{font-family:'Instrument Serif', serif;font-style:italic;font-size:clamp(150px, 18vw, 240px);line-height:.8;color:transparent;-webkit-text-stroke:1px var(--ink-3);letter-spacing:-.04em;user-select:none;position:relative;z-index:1}
+.numdivider{position:relative;padding:0;margin:0;overflow:hidden;height:clamp(84px, 8vw, 104px);display:flex;align-items:center;justify-content:center;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--paper)}
+.numdivider .big{font-family:'Instrument Serif', serif;font-style:italic;font-size:clamp(120px, 11.5vw, 150px);line-height:.8;color:transparent;-webkit-text-stroke:1px var(--ink-3);letter-spacing:-.04em;user-select:none;position:relative;z-index:1}
 .numdivider .lbl{position:absolute;left:50%;top:50%;transform:translate(-50%, -50%);font:500 11px/1.6 'JetBrains Mono', monospace;letter-spacing:.32em;text-transform:uppercase;color:var(--ink);text-align:center;z-index:2;background:var(--paper);padding:6px 18px;border:1px solid var(--rule)}
 .numdivider .lbl em{font-style:italic;color:var(--accent-text);font-family:'Instrument Serif', serif;text-transform:none;letter-spacing:0;font-weight:400;font-size:18px;display:block;margin-top:6px}
 [data-mode="dark"] .numdivider{background:var(--paper);border-color:var(--rule)}
@@ -702,8 +742,8 @@ a.linkcard{display:block}
    them, so they never applied: a phone got the 180px divider and the 64px marquee. Here, after
    the base rules, they do apply. */
 @media (max-width:720px){
-  .numdivider{height:100px}
-  .numdivider .big{font-size:144px}
+  .numdivider{height:84px}
+  .numdivider .big{font-size:120px}
   .signmarquee{padding:24px 0}
   .signmarquee .row{gap:36px}
   .signmarquee span{font-size:clamp(30px, 9vw, 52px);gap:28px}
